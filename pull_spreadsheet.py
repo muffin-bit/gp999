@@ -11,7 +11,7 @@ from google.oauth2.credentials import Credentials
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SPREADSHEET_ID = '1LaF_HQJXQeDqLCt4R38Q_ATMFekLRhob-IBLu6eXDdw'
-FILE_PATH = 'data/muffin-bit.github.io_gp999 - Profile Info.csv'
+FILE_PATH = 'data.csv'
 
 def get_credentials():
     if os.path.exists('private/token.json'):
