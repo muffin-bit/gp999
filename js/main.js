@@ -16,7 +16,7 @@ function parseLine(row) {
 function showProfiles(data) {
     data.forEach(function(d) {
       // Make it show up on the page
-      var markup = "<tr><td>" + d.nameEnglish + "</td><td>" + d.group + "</td><td><img <img style=\"display:block;\" width=\"100%\" height=\"100%\"src=" + d.profilePic1 + "></td></tr>";
+      var markup = "<tr><td>" + d.nameEnglish + "</td><td>" + d.group + "</td><td><img <img style=\"display:block;\" width=\"100%\" height=\"100%\"src=img/ProfilePics/" + d.id + "_ProfilePic1.jpg></td></tr>";
             $("table tbody").append(markup);
     })
     return data;

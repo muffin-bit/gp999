@@ -142,7 +142,7 @@ border-collapse: collapse;
 }
 table, th, td{
     border: 1px solid #cdcdcd;
-    max-width: 800px;
+    max-width: 600px;
 }
 table th, table td{
     padding: 10px;
