@@ -135,18 +135,9 @@ img.arrow {
       margin: 5px 0 8px; }
 
 
-table{
-    width: 80%;
-    margin-bottom: 20px;
-border-collapse: collapse;
-}
-table, th, td{
-    border: 1px solid #cdcdcd;
-    max-width: 600px;
-}
-table th, table td{
-    padding: 10px;
-    text-align: left;
+#contestantsTable {
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 /*# sourceMappingURL=main.css.map */
