@@ -22,7 +22,7 @@ h1 {
 
 /* Top */
 #banner {
-  background: #000000; /*url("../img/banner.png") center center; */
+  background: #FFF0FD; /*url("../img/banner.png") center center; */
   height: 200px;
   box-sizing: border-box;
   position: relative;
@@ -133,5 +133,20 @@ img.arrow {
       margin: 5px 0 8px; }
     #profile #textWrapper #infoRank {
       margin: 5px 0 8px; }
+
+
+table{
+    width: 80%;
+    margin-bottom: 20px;
+border-collapse: collapse;
+}
+table, th, td{
+    border: 1px solid #cdcdcd;
+    max-width: 800px;
+}
+table th, table td{
+    padding: 10px;
+    text-align: left;
+}
 
 /*# sourceMappingURL=main.css.map */
