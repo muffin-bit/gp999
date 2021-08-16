@@ -1,0 +1,4 @@
+private/
+venv/
+credentials.json
+token.json
