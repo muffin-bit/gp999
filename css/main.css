@@ -135,9 +135,17 @@ img.arrow {
       margin: 5px 0 8px; }
 
 
-#contestantsTable {
+#contestantsGrid {
   margin-left: 40px;
   margin-right: 40px;
+  text-align: center;
+}
+
+.smallProfile {
+  width: 15%;
+  padding: 15px;
+  margin-bottom: 40px;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=main.css.map */

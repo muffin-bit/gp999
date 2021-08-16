@@ -26,11 +26,7 @@ function showProfiles(data) {
 
 function createProfileDivForPerson(person) {
     var div = document.createElement('div');
-    // div.setAttribute('width', '20%');
-    div.style.width = '20%';
-    div.style.padding = '5px';
-    div.style.marginBottom = '40px';
-    div.style.display = 'inline-block';
+    div.className = 'smallProfile';
 
     var img = document.createElement('img');
     img.setAttribute('src', 'img/ProfilePics/' + person.id + '_ProfilePic1.jpg');
@@ -52,7 +48,7 @@ function createProfileDivForPerson(person) {
     nameKorean.style.marginBottom = '5px';
     div.appendChild(nameKorean);
 
-    document.getElementById("contestantsTable").appendChild(div);
+    document.getElementById("contestantsGrid").appendChild(div);
 }
 
 function main() {
