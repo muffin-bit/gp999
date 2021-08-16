@@ -18,5 +18,5 @@ pip install -r requirements.txt
 ```
 Finally you can run the script to pull the data
 ```
-python pull_spreadsheet.py
+python bin/pull_spreadsheet.py
 ```
