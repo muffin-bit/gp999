@@ -1,14 +1,20 @@
 /*General*/
+@font-face {
+    font-family: AzonixCustom;
+    src: url("font/azonix/Azonix.otf") format("opentype");
+}
+
 * {
-  font-family: "Open Sans";
+  font-family: AzonixCustom; /* Open Sans; */
   margin: 0;
   padding: 0;
   background: none;
   outline: none; }
 
 body {
-  background: #f8f8f8;
-  font-size: 14px; }
+  background: linear-gradient(135deg, rgb(255, 247, 253), rgb(238, 226, 252));
+  font-size: 14px;
+}
 
 .smallCaps {
   text-transform: uppercase;
