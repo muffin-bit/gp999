@@ -141,6 +141,31 @@ img.arrow {
   text-align: center;
 }
 
+#contestantsFilters {
+  width: 40%;
+  text-align: center;
+  margin: auto;
+  background-color: #3f0d54;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+button {
+  background-color: #3f0d54;
+  border: none;
+  color: grey;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+}
+
+.activeFilterButton {
+  color: white;
+}
+
 .smallProfile {
   width: 15%;
   padding: 15px;

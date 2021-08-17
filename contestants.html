@@ -28,9 +28,13 @@
       </div>
       </div>
 </div>
-    <!-- Table of contestants -->
-    <div id="contestantsGrid">
+    <div id="contestantsFilters">
+      <button type="button" class="activeFilterButton" id="resetFilterButton" id="resetFiltersButton" onclick="resetFilters()">All</button>
+      <button type="button" id="CFilterButton" onclick="filterProfilesToC()">C Group</button>
+      <button type="button" id="KFilterButton" onclick="filterProfilesToK()">K Group</button>
+      <button type="button" id="JFilterButton" onclick="filterProfilesToJ()">J Group</button>
     </div>
+    <div id="contestantsGrid"></div>
 
     <script src="js/main.js"></script>
 </body>

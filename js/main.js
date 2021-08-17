@@ -20,7 +20,7 @@ function showProfiles(data) {
 
 function createProfileDivForPerson(person) {
     var div = document.createElement('div');
-    div.className = 'smallProfile';
+    div.className = 'smallProfile ' + person.group + 'Group'; // Two DOM classes
 
     var img = document.createElement('img');
     img.setAttribute('src', 'img/ProfilePics/' + person.id + '_ProfilePic1.jpg');
@@ -47,6 +47,63 @@ function createProfileDivForPerson(person) {
     div.appendChild(nameKorean);
 
     document.getElementById("contestantsGrid").appendChild(div);
+}
+
+function filterProfilesToK() {
+  filterProfiles(true, false, false);
+}
+
+function filterProfilesToJ() {
+  filterProfiles(false, false, true);
+}
+
+function filterProfilesToC() {
+  filterProfiles(false, true, false);
+}
+
+function filterProfiles(KGroupShowing, CGroupShowing, JGroupShowing) {
+  // Update appearance of filter buttons
+  var KFilterButton = document.getElementById("KFilterButton");
+  KFilterButton.classList.remove("activeFilterButton");
+  var CFilterButton = document.getElementById("CFilterButton");
+  CFilterButton.classList.remove("activeFilterButton");
+  var JFilterButton = document.getElementById("JFilterButton");
+  JFilterButton.classList.remove("activeFilterButton");
+  var resetFilterButton = document.getElementById("resetFilterButton");
+  resetFilterButton.classList.remove("activeFilterButton");
+
+  if (KGroupShowing && CGroupShowing && JGroupShowing) {
+    resetFilterButton.className += "activeFilterButton"
+  } else if (KGroupShowing) {
+    KFilterButton.className += "activeFilterButton"
+  } else if (CGroupShowing) {
+    CFilterButton.className += "activeFilterButton"
+  } else if (JGroupShowing) {
+    JFilterButton.className += "activeFilterButton"
+  }
+
+  // Do the actual filtering of visible profiles
+  // K Group
+  var KGroupProfiles = document.getElementsByClassName("KGroup");
+  for (let person of KGroupProfiles) {
+    person.style.display = (KGroupShowing ? 'inline-block' : 'none');
+  }
+
+  // C Group
+  var CGroupProfiles = document.getElementsByClassName("CGroup");
+  for (let person of CGroupProfiles) {
+    person.style.display = (CGroupShowing ? 'inline-block' : 'none');
+  }
+
+  // J Group
+  var JGroupProfiles = document.getElementsByClassName("JGroup");
+  for (let person of JGroupProfiles) {
+    person.style.display = (JGroupShowing ? 'inline-block' : 'none');
+  }
+}
+
+function resetFilters() {
+  filterProfiles(true, true, true);
 }
 
 function main() {
