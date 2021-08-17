@@ -9,18 +9,48 @@ function parseLine(row) {
     person.nameJapanese = row["Name (Japanese)"];
     person.nameChinese = row["Name (Chinese)"];
     person.nameKorean = row["Name (Korean)"];
-    person.profilePic1 = row["Profile Pic 1"]
+    person.profilePic1 = row["Profile Pic 1"];
+    person.birthday = row["Birthday"];
+    person.mbti = row["MBTI"];
     return person;
 }
 
 function showProfile(data, girlId) {
-    data.forEach(function(d) {
-      if (d.id == girlId) {
-        var markup = "<tr><td>" + d.nameEnglish + "</td><td>" + d.group + "</td><td><a href='profile.html?id=" + d.id + "'><img <img style=\"display:block;\" width=\"100%\" height=\"100%\"src=img/ProfilePics/" + d.id + "_ProfilePic1.jpg></a></td></tr>";
-        $("table tbody").append(markup);
-      }
-    })
-    return data;
+  data.forEach(function(d) {
+    if (d.id == girlId) {
+      createProfileHeaderForPerson(d)
+    }
+  })
+}
+
+function createProfileHeaderForPerson(person) {
+    var img = document.getElementById("profileHeaderImage")
+    img.setAttribute('src', 'img/ProfilePics/' + person.id + '_ProfilePic1.jpg');
+    img.style.display = 'block';
+    img.style.width = '100%';
+    img.style.borderRadius = '10%';
+    img.style.marginBottom = '5px';
+
+    var nameHeader = document.getElementById("profileHeaderNameEnglish")
+    nameHeader.textContent = person.nameEnglish;
+
+    var nameHeader = document.getElementById("profileHeaderNameChinese")
+    nameHeader.textContent = person.nameChinese;
+
+    var nameHeader = document.getElementById("profileHeaderNameKorean")
+    nameHeader.textContent = person.nameKorean;
+
+    var nameHeader = document.getElementById("profileHeaderNameJapanese")
+    nameHeader.textContent = person.nameJapanese;
+
+    var nameHeader = document.getElementById("profileGroupText")
+    nameHeader.textContent = person.group;
+
+    var nameHeader = document.getElementById("profileBirthday")
+    nameHeader.textContent = "BIRTHDAY: " + person.birthday;
+
+    var nameHeader = document.getElementById("profileMBTI")
+    nameHeader.textContent = "MBTI: " + person.mbti;
 }
 
 function getIdQueryParam() {
