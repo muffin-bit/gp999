@@ -26,61 +26,6 @@ h1 {
   margin-bottom: 20px;
   font-size: 24px; }
 
-/* Top */
-#banner {
-  background: #FFF0FD; /*url("../img/banner.png") center center; */
-  height: 200px;
-  box-sizing: border-box;
-  position: relative;
-  /* top: -25px; */
-  /* top: 0px; */
-  text-align: center;
-  padding-top: 20px;
-  margin-bottom: 40px; }
-  #banner img {
-    max-height: 120px; }
-
-.topnav {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-  overflow: hidden;
-  font-size: 18px;
-  font-weight 700;
-  text-transform: uppercase;}
-
-  .topnav .rightnav {
-    padding-right: 40px;
-    text-align: right;
-    color: #AAA; }
-
-  .topnav .leftnav {
-    padding-left: 40px;
-    text-align: left; }
-
-  .topnav a + a {
-    margin-left: 40px; }
-
-  .topnav a:link {
-    color: #AAA;
-    background-color: transparent;
-    text-decoration: none; }
-
-  .topnav a:visited {
-    color: #AAA;
-    background-color: transparent;
-    text-decoration: none; }
-
-  .topnav a:hover {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline; }
-
-  .topnav #current {
-    color: red;
-    background-color: transparent;
-    text-decoration: underline; }
-
 #mainWrapper {
   min-height: 100%;
   padding: 0 40px;
