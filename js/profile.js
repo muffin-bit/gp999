@@ -2,7 +2,7 @@
 
 // Imports
 import { Person } from './person.js';
-import { Performance } from './performance.js';
+import { PerformanceRep } from './performance.js';
 
 // Constants and variables
 const videos = {
@@ -28,13 +28,14 @@ function showProfile(data, girlId) {
   let person = contestants[girlId]
   createProfileHeaderForPerson(person);
   createPerformanceRep(person, videos.AUDITION);
+  createPerformanceRep(person, videos.CONNECT);
 }
 
 function createProfileHeaderForPerson(person) {
     var img = document.getElementById("profileHeaderImage")
     img.setAttribute('src', 'img/ProfilePics/' + person.id + '_ProfilePic1.jpg');
     img.style.display = 'block';
-    img.style.width = '100%';
+    img.style.height = '100%';
     img.style.borderRadius = '10%';
     img.style.marginBottom = '5px';
 
@@ -62,16 +63,20 @@ function createProfileHeaderForPerson(person) {
 
 function createPerformanceRep(person, performance) {
   // Get performance info
-  var perf = new Performance()
+  var perfBuilder = {};
   var perfProperty = "";
   switch(performance){
     case videos.AUDITION:
-      perf.title = "Audition Mission";
-      perf.subtitle = person.auditionPerformance.name;
-      perf.videoURL = person.auditionPerformance.url;
-      perfProperty = "auditionPerformance"
+      perfBuilder.title = "Audition Mission";
+      perfBuilder.subtitle = "\"" + person.auditionPerformance.name + "\"";
+      perfBuilder.videoURL = person.auditionPerformance.url;
+      perfProperty = "auditionPerformance";
       break;
     case videos.CONNECT:
+      perfBuilder.title = "Connect Mission";
+      perfBuilder.subtitle =  "\"" + person.connectPerformance.name + "\"";
+      perfBuilder.videoURL = person.connectPerformance.url;
+      perfProperty = "connectPerformance";
       break;
     default:
       console.error("WARNING: Unknown performance being rendered");
@@ -81,32 +86,38 @@ function createPerformanceRep(person, performance) {
   // Get teammates
   var teammates = []
   for (let c in contestants) {
-    if (contestants[c][perfProperty].name == person[perfProperty].name) {
-      teammates.push(contestants[c])
+    if (contestants[c][perfProperty].id == person[perfProperty].id) {
+      teammates.push(contestants[c]);
     }
   }
-  perf.teammates = teammates;
-  performances.push(perf)
+  perfBuilder.teammates = teammates;
+  let perfRep = new PerformanceRep(perfBuilder);
+  performances.push(perfRep);
 
   // Layout out full team
-  document.getElementById("performancesList").appendChild(perf.rep);
+  document.getElementById("performancesList").appendChild(perfRep.rep);
 }
 
 // video
 function youtubeAPILoaded() {
   for (let perf of performances) {
-    let params = new URL(perf.videoURL).searchParams
-    let videoId = params.get("v")
+    if (perf.videoURL) {
+      let params = new URL(perf.videoURL).searchParams
+      let videoId = params.get("v")
 
-    if (perf.videoDomId) {
-      var player = new YT.Player(perf.videoDomId, {
-        height: '390',
-        width: '640',
-        videoId: videoId,
-        playerVars: {
-          'playsinline': 1
-        }
-      });
+      if (perf.videoDomId) {
+        var player = new YT.Player(perf.videoDomId, {
+          height: '312',
+          width: '512',
+          videoId: videoId,
+          playerVars: {
+            'playsinline': 1
+          }
+        });
+      }
+    } else {
+      console.error("Warning, no video URL present");
+      debugger;
     }
   }
 }

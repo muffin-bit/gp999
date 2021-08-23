@@ -1,5 +1,7 @@
 "use strict";
 
+import * as k from './constants.js'
+
 export class Person {
   constructor(row) {
     this.id = row["Contestant ID (internal)"];
@@ -12,11 +14,24 @@ export class Person {
     this.birthday = row["Birthday"];
     this.mbti = row["MBTI"];
     this.auditionPerformance = {
+      id: row["Audition Song"],
       name: row["Audition Song"],
-      url: row["Audition Performance URL"],
+      url: row["Audition URL"],
       top9candidate: row["Audition Top 9 Candidate"],
       top9rank: row["Ep 2 Top 9 Ranking"]
-    }
+    };
+    this.connectPerformance = {
+      id: row["Connect URL"],
+      name: row["Connect Song"],
+      teamNumber: row["Connect Team (1 or 2)"],
+      teamName: row["Connect Team Name"],
+      position: row["Connect Position"],
+      url: row["Connect URL"],
+    };
+    this.newCell = {
+      prelimRank: row["New Cell Prelim Rank"],
+      finalRank: row["New Cell Final Rank"]
+    };
   }
 
   get smallRep() {
@@ -43,7 +58,7 @@ export class Person {
     var nameEnglish = document.createElement('h3');
     nameEnglish.textContent = this.nameEnglish;
     nameEnglish.style.textAlign = 'center';
-    nameEnglish.style.marginBottom = '5px';
+    nameEnglish.style.marginBottom = k.spacingTiny;
     div.appendChild(nameEnglish);
 
     return div;

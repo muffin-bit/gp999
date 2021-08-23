@@ -1,5 +1,7 @@
 "use strict";
 
+import * as k from './constants.js'
+
 // Parse line of csv into an object
 function parseLine(row) {
     var person = {};
@@ -27,7 +29,7 @@ function createProfileDivForPerson(person) {
     img.style.display = 'block';
     img.style.width = '100%';
     img.style.borderRadius = '10%';
-    img.style.marginBottom = '5px';
+    img.style.marginBottom = k.spacingTiny;
 
     var a = document.createElement('a');
     a.href = 'profile.html?id=' + person.id
@@ -37,13 +39,13 @@ function createProfileDivForPerson(person) {
     var nameEnglish = document.createElement('h3');
     nameEnglish.textContent = person.nameEnglish;
     nameEnglish.style.textAlign = 'center';
-    nameEnglish.style.marginBottom = '5px';
+    nameEnglish.style.marginBottom = k.spacingTiny;
     div.appendChild(nameEnglish);
 
     var nameKorean = document.createElement('h3');
     nameKorean.textContent = person.nameKorean;
     nameKorean.style.textAlign = 'center';
-    nameKorean.style.marginBottom = '5px';
+    nameKorean.style.marginBottom = k.spacingTiny;
     div.appendChild(nameKorean);
 
     document.getElementById("contestantsGrid").appendChild(div);
