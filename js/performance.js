@@ -88,6 +88,7 @@ export class PerformanceRep {
       fancamVideoPlayer = document.createElement('div')
       fancamVideoPlayer.id = this.fancamDomId
       fancamVideoPlayer.style.backgroundColor = "#FE0f23";
+      fancamVideoPlayer.style.marginTop = k.spacingMedium;
       rightSide.appendChild(fancamVideoPlayer);
     }
 
