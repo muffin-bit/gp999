@@ -15,7 +15,7 @@ export class PerformanceRep {
   get rep() {
     var div = document.createElement('div');
     div.className = 'performance'
-    div.style.margin = k.spacingLarge
+    div.style.margin = k.spacingXLarge
 
     var leftAndRightSides = document.createElement('div');
     leftAndRightSides.className = 'centeredRow';
@@ -58,9 +58,9 @@ export class PerformanceRep {
 
       let l = this.teammates.length;
       if (l in [5, 6] || l == 9) {
-        team.style.flexBasis = '33.33333%';
+        leftSide.style.maxWidth = '500px';
       } else if (l <= 4 || l >= 7) {
-        team.style.flexBasis = '25.0%';
+        leftSide.style.maxWidth = '560px';
       }
       leftSide.appendChild(team)
     }
