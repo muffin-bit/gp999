@@ -56,8 +56,14 @@ function createProfileHeaderForPerson(person) {
     var nameHeader = document.getElementById("profileBirthday")
     nameHeader.textContent = "BIRTHDAY: " + person.birthday;
 
+    var nameHeader = document.getElementById("profileZodiac")
+    nameHeader.textContent = "Zodiac: " + person.zodiac;
+
     var nameHeader = document.getElementById("profileMBTI")
     nameHeader.textContent = "MBTI: " + person.mbti;
+
+    var nameHeader = document.getElementById("profileHeight")
+    nameHeader.textContent = "Height: " + person.heightIN;
 }
 
 function createPerformanceRep(person, performance) {

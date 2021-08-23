@@ -12,7 +12,10 @@ export class Person {
     this.nameKorean = row["Name (Korean)"];
     this.profilePic1 = row["Profile Pic 1"];
     this.birthday = row["Birthday"];
+    this.zodiac = row["Zodiac"];
     this.mbti = row["MBTI"];
+    this.heightCM = row["Height (cm)"];
+    this.heightIN = row["Height (in)"];
     this.auditionPerformance = {
       id: row["Audition Song"],
       name: row["Audition Song"],
