@@ -49,128 +49,37 @@ h1 {
   font-weight 700;
   text-transform: uppercase;}
 
-  .topnav .rightnav {
-    padding-right: 40px;
-    text-align: right;
-    color: #AAA; }
+.topnav .rightnav {
+  padding-right: 40px;
+  text-align: right;
+  color: #AAA; }
 
-  .topnav .leftnav {
-    padding-left: 40px;
-    text-align: left; }
+.topnav .leftnav {
+  padding-left: 40px;
+  text-align: left; }
 
-  .topnav a + a {
-    margin-left: 40px; }
+.topnav a + a {
+  margin-left: 40px; }
 
-  .topnav a:link {
-    color: #AAA;
-    background-color: transparent;
-    text-decoration: none; }
+.topnav a:link {
+  color: #AAA;
+  background-color: transparent;
+  text-decoration: none; }
 
-  .topnav a:visited {
-    color: #AAA;
-    background-color: transparent;
-    text-decoration: none; }
+.topnav a:visited {
+  color: #AAA;
+  background-color: transparent;
+  text-decoration: none; }
 
-  .topnav a:hover {
-    color: white;
-    background-color: transparent;
-    text-decoration: underline; }
-
-  .topnav .leftnav .current {
-    color: red;
-    background-color: transparent;
-    text-decoration: underline; }
-
-#mainWrapper {
-  min-height: 100%;
-  padding: 0 40px;
-  margin: auto;
-  position: relative; }
-
-/* Misc */
-img.arrow {
-  height: 10px;
-  margin-left: 5px; }
-
-.change {
-  padding-left: 3px;
-  font-weight: bold; }
-  .change.up {
-    color: #00a500; }
-  .change.down {
-    color: #d60a2a; }
-
-.note {
-  background: black;
+.topnav a:hover {
   color: white;
-  display: inline-block;
-  position: absolute;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 8px 0;
-  box-sizing: border-box;
-  width: 36px;
-  height: 36px;
-  border-radius: 100%;
-  font-size: 14px;
-  font-weight: bold; }
+  background-color: transparent;
+  text-decoration: underline; }
 
-/* Info */
-#profile {
-  margin-top: 100px;
-  margin-left: 40px;
-  height: 160px; }
-  #profile #picWrapper {
-    float: left;
-    width: 180px; }
-    #profile #picWrapper img {
-      width: 100%; }
-  #profile #textWrapper {
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 40px;
-    padding-top: 40px; }
-    #profile #textWrapper #infoName, #profile #textWrapper #infoNameJapanese {
-      font-size: 20px;
-      font-weight: 700; }
-    #profile #textWrapper #infoLetter {
-      top: -3px; }
-    #profile #textWrapper #infoCompany {
-      margin: 5px 0 8px; }
-    #profile #textWrapper #infoRank {
-      margin: 5px 0 8px; }
-
-
-#contestantsGrid {
-  margin-left: 40px;
-  margin-right: 40px;
-  text-align: center;
-}
-
-#contestantsFilters {
-  width: 40%;
-  text-align: center;
-  margin: auto;
-  background-color: #3f0d54;
-  border-radius: 20px;
-  margin-bottom: 24px;
-}
-
-button {
-  background-color: #3f0d54;
-  border: none;
-  color: grey;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 20px;
-}
-
-.activeFilterButton {
-  color: white;
-}
+.topnav .leftnav .current {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline; }
 
 .smallProfile {
   width: 15%;
@@ -184,7 +93,6 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100%;
 }
 
 .centeredRow {
@@ -193,79 +101,6 @@ button {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-}
-
-#profileHeader {
-  width: 80%;
-  margin: auto;
-}
-
-#profileDetails {
-  width: 40%;
-  height: 600px;
-  padding: 40px;
-  padding-top: 80px;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
-}
-
-#profileDetailsHeader {
-  padding-bottom: 40px;
-}
-
-#profileHeaderImageWrapper {
-  width: 40%;
-  height: 600px;
-  padding-left: 40px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-#profileHeaderNameEnglish {
-  font-size: 80px;
-}
-
-#profileGroupAndNames {
-  vertical-align: middle;
-}
-
-#profileNamesNonEnglish {
-  text-align: center;
-  display: inline-block;;
-  vertical-align: middle;
-}
-
-#profileGroup {
-  font-size: 50px;
-  line-height: 1.2;
-  display: inline-block;
-  margin-right: 40px;
-  vertical-align: middle;
-  border-style: solid;
-  border-radius: 50%;
-  padding: 20px;
-  width:80px;
-  height:80px;
-}
-
-#profileHeaderNameKorean {
-  font-size: 30px;
-  color: #4F4F4F;
-}
-
-#profileHeaderNameChinese {
-  font-size: 30px;
-  color: #4F4F4F;
-}
-
-#profileHeaderNameJapanese {
-  font-size: 30px;
-  color: #4F4F4F;
-}
-
-#profileDetailsBody {
-  text-align: left;
 }
 
 .image-cropper-circle {

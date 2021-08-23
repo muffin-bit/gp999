@@ -1,0 +1,72 @@
+#profileHeader {
+  width: 80%;
+  margin: auto;
+}
+
+#profileDetails {
+  width: 40%;
+  height: 600px;
+  padding: 40px;
+  padding-top: 80px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+
+#profileDetailsHeader {
+  padding-bottom: 40px;
+}
+
+#profileHeaderImageWrapper {
+  width: 40%;
+  height: 600px;
+  padding-left: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#profileHeaderNameEnglish {
+  font-size: 80px;
+}
+
+#profileGroupAndNames {
+  vertical-align: middle;
+}
+
+#profileNamesNonEnglish {
+  text-align: center;
+  display: inline-block;;
+  vertical-align: middle;
+}
+
+#profileGroup {
+  font-size: 50px;
+  line-height: 1.2;
+  display: inline-block;
+  margin-right: 40px;
+  vertical-align: middle;
+  border-style: solid;
+  border-radius: 50%;
+  padding: 20px;
+  width:80px;
+  height:80px;
+}
+
+#profileHeaderNameKorean {
+  font-size: 30px;
+  color: #4F4F4F;
+}
+
+#profileHeaderNameChinese {
+  font-size: 30px;
+  color: #4F4F4F;
+}
+
+#profileHeaderNameJapanese {
+  font-size: 30px;
+  color: #4F4F4F;
+}
+
+#profileDetailsBody {
+  text-align: left;
+}

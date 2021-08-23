@@ -37,7 +37,6 @@ function createProfileHeaderForPerson(person) {
     img.style.display = 'block';
     img.style.height = '100%';
     img.style.borderRadius = '10%';
-    img.style.marginBottom = '5px';
 
     var nameHeader = document.getElementById("profileHeaderNameEnglish")
     nameHeader.textContent = person.nameEnglish;
