@@ -69,13 +69,14 @@ function createPerformanceRep(person, performance) {
     case videos.AUDITION:
       perfBuilder.title = "Audition Mission";
       perfBuilder.subtitle = "\"" + person.auditionPerformance.name + "\"";
-      perfBuilder.videoURL = person.auditionPerformance.url;
+      perfBuilder.perfVideoURL = person.auditionPerformance.perfURL;
       perfProperty = "auditionPerformance";
       break;
     case videos.CONNECT:
       perfBuilder.title = "Connect Mission";
       perfBuilder.subtitle =  "\"" + person.connectPerformance.name + "\"";
-      perfBuilder.videoURL = person.connectPerformance.url;
+      perfBuilder.perfVideoURL = person.connectPerformance.perfURL;
+      perfBuilder.fancamVideoURL = person.connectPerformance.fancamURL;
       perfProperty = "connectPerformance";
       break;
     default:
@@ -101,12 +102,22 @@ function createPerformanceRep(person, performance) {
 // video
 function youtubeAPILoaded() {
   for (let perf of performances) {
-    if (perf.videoURL) {
-      let params = new URL(perf.videoURL).searchParams
+    let videos = []
+    if (perf.perfVideoURL) {
+      videos.push([perf.perfVideoURL, perf.perfDomId]);
+    }
+    if (perf.fancamVideoURL) {
+      videos.push([perf.fancamVideoURL, perf.fancamDomId]);
+    }
+
+    for (let tuple of videos) {
+      let vidURL = tuple[0]
+      let vidDomId = tuple[1]
+      let params = new URL(vidURL).searchParams
       let videoId = params.get("v")
 
-      if (perf.videoDomId) {
-        var player = new YT.Player(perf.videoDomId, {
+      if (vidDomId) {
+        var player = new YT.Player(vidDomId, {
           height: '312',
           width: '512',
           videoId: videoId,
@@ -115,7 +126,8 @@ function youtubeAPILoaded() {
           }
         });
       }
-    } else {
+    }
+    if (videos.length == 0) {
       console.error("Warning, no video URL present");
       debugger;
     }

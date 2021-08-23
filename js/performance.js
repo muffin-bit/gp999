@@ -8,8 +8,10 @@ export class PerformanceRep {
     this.title = builder.title;
     this.subtitle = builder.subtitle;
     this.teammates = builder.teammates;
-    this.videoURL = builder.videoURL;
-    this.videoDomId = builder.title + "-video";
+    this.perfVideoURL = builder.perfVideoURL;
+    this.fancamVideoURL = builder.fancamVideoURL;
+    this.perfDomId = builder.title + "-perfVideo";
+    this.fancamDomId = builder.title + "-fancamVideo";
   }
 
   get rep() {
@@ -73,11 +75,22 @@ export class PerformanceRep {
     rightSide.style.marginRight = k.spacingLarge;
     rightSide.style.maxWidth = '50%'
 
-    var videoPlayer;
-    videoPlayer = document.createElement('div')
-    videoPlayer.id = this.videoDomId
-    videoPlayer.style.backgroundColor = "#FE0f23";
-    rightSide.appendChild(videoPlayer);
+    var perfVideoPlayer;
+    if (this.perfVideoURL) {
+      perfVideoPlayer = document.createElement('div')
+      perfVideoPlayer.id = this.perfDomId
+      perfVideoPlayer.style.backgroundColor = "#FE0f23";
+      rightSide.appendChild(perfVideoPlayer);
+    }
+
+    var fancamVideoPlayer;
+    if (this.fancamVideoURL) {
+      fancamVideoPlayer = document.createElement('div')
+      fancamVideoPlayer.id = this.fancamDomId
+      fancamVideoPlayer.style.backgroundColor = "#FE0f23";
+      rightSide.appendChild(fancamVideoPlayer);
+    }
+
 
     leftAndRightSides.appendChild(rightSide);
 

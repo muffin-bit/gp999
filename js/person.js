@@ -16,7 +16,7 @@ export class Person {
     this.auditionPerformance = {
       id: row["Audition Song"],
       name: row["Audition Song"],
-      url: row["Audition URL"],
+      perfURL: row["Audition URL"],
       top9candidate: row["Audition Top 9 Candidate"],
       top9rank: row["Ep 2 Top 9 Ranking"]
     };
@@ -26,7 +26,8 @@ export class Person {
       teamNumber: row["Connect Team (1 or 2)"],
       teamName: row["Connect Team Name"],
       position: row["Connect Position"],
-      url: row["Connect URL"],
+      perfURL: row["Connect URL"],
+      fancamURL: row["Connect Fancam URL"],
     };
     this.newCell = {
       prelimRank: row["New Cell Prelim Rank"],
