@@ -51,6 +51,20 @@ function createProfileDivForPerson(person) {
     document.getElementById("contestantsGrid").appendChild(div);
 }
 
+function setupFilters() {
+  var KFilterButton = document.getElementById("KFilterButton");
+  KFilterButton.addEventListener('click', filterProfilesToK);
+
+  var JFilterButton = document.getElementById("JFilterButton");
+  JFilterButton.addEventListener('click', filterProfilesToJ);
+
+  var CFilterButton = document.getElementById("CFilterButton");
+  CFilterButton.addEventListener('click', filterProfilesToC);
+
+  var resetFilterButton = document.getElementById("resetFilterButton");
+  resetFilterButton.addEventListener('click', resetFilters);
+}
+
 function filterProfilesToK() {
   filterProfiles(true, false, false);
 }
@@ -113,6 +127,7 @@ function main() {
   d3.csv("https://muffin-bit.github.io/gp999/data.csv", parseLine, function (err, data) {
       showProfiles(data);
   });
+  setupFilters();
 }
 
 main()
