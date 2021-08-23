@@ -1,6 +1,8 @@
 # gp999
 Girls Planet 999
 
+https://muffin-bit.github.io/gp999/contestants.html
+
 ## Setup
 ### Updating the Data
 To pull the latest information from the spreadsheet, follow these steps:
