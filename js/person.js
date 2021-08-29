@@ -16,6 +16,10 @@ export class Person {
     this.mbti = row["MBTI"];
     this.heightCM = row["Height (cm)"];
     this.heightIN = row["Height (in)"];
+    this.signalSong = {
+      perfURL: row["Signal Song Video URL"],
+      rank: row["Signal Song Rank"]
+    },
     this.auditionPerformance = {
       id: row["Audition Song"],
       name: row["Audition Song"],

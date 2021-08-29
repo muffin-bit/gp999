@@ -18,7 +18,7 @@ export class PerformanceRep {
   get rep() {
     var div = document.createElement('div');
     div.className = 'performance'
-    div.style.margin = k.spacingXLarge
+    div.style.marginBottom = k.spacingXLarge
 
     var leftAndRightSides = document.createElement('div');
     leftAndRightSides.className = 'centeredRow';

@@ -1,6 +1,7 @@
 "use strict";
 
 // Imports
+import * as k from './constants.js'
 import { Person } from './person.js';
 import { PerformanceRep } from './performance.js';
 
@@ -27,8 +28,7 @@ function parseLine(row) {
 function showProfile(data, girlId) {
   let person = contestants[girlId];
   createProfileHeaderForPerson(person);
-  createPerformanceRep(person, videos.AUDITION);
-  createPerformanceRep(person, videos.CONNECT);
+  createPerformancesAndRankingsForPerson(person);
 }
 
 function createProfileHeaderForPerson(person) {
@@ -64,6 +64,41 @@ function createProfileHeaderForPerson(person) {
 
     var nameHeader = document.getElementById("profileHeight")
     nameHeader.textContent = "Height: " + person.heightIN;
+}
+
+function createPerformancesAndRankingsForPerson(person) {
+  var performancesList = document.getElementById("performancesList");
+  // performancesList.style.margin = "0px 80px";
+
+  // RANKINGS
+
+  var rankingsDiv = document.createElement("h3")
+  rankingsDiv.className = "leftAlignedColumn";
+  rankingsDiv.style.width = "100%";
+  rankingsDiv.style.marginBottom = k.spacingXLarge;
+
+  var rankingsTitle = document.createElement('h3');
+  rankingsTitle.textContent = "Rankings";
+  rankingsTitle.style.textAlign = 'center';
+  rankingsTitle.style.marginBottom = k.spacingMedium;
+  rankingsTitle.style.fontSize = '50';
+  rankingsDiv.appendChild(rankingsTitle);
+
+  var signalSong = document.createElement("h3");
+  signalSong.textContent = "Signal Song (O.O.O):    " + person.group + person.signalSong.rank;
+  signalSong.style.marginBottom = k.spacingSmall;
+  rankingsDiv.appendChild(signalSong);
+
+  var ep3Ranking = document.createElement("h3");
+  ep3Ranking.textContent = "First elimination prelim cell results:    " + person.connectPerformance.cellPrelimRank;
+  ep3Ranking.style.marginBottom = k.spacingSmall;
+  rankingsDiv.appendChild(ep3Ranking);
+
+  document.getElementById("performancesList").appendChild(rankingsDiv);
+
+  // PERFORMANCES
+  createPerformanceRep(person, videos.AUDITION);
+  createPerformanceRep(person, videos.CONNECT);
 }
 
 function createPerformanceRep(person, performance) {
