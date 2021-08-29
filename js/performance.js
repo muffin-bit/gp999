@@ -8,6 +8,7 @@ export class PerformanceRep {
     this.title = builder.title;
     this.subtitle = builder.subtitle;
     this.teammates = builder.teammates;
+    this.teamName = builder.teamName;
     this.perfVideoURL = builder.perfVideoURL;
     this.fancamVideoURL = builder.fancamVideoURL;
     this.perfDomId = builder.title + "-perfVideo";
@@ -29,23 +30,33 @@ export class PerformanceRep {
     leftSide.style.maxWidth = '560px';
 
     var title;
-    if (this.title != "") {
+    if (this.title != "" && this.title !== undefined) {
       title = document.createElement('h3');
       title.textContent = this.title;
       title.style.textAlign = 'center';
       title.style.marginBottom = k.spacingSmall;
-      title.style.fontSize = '40';
+      title.style.fontSize = '50';
       leftSide.appendChild(title);
     }
 
     var subtitle;
-    if (this.subtitle != "") {
+    if (this.subtitle != "" && this.subtitle !== undefined) {
       subtitle = document.createElement('h3');
       subtitle.textContent = this.subtitle;
       subtitle.style.textAlign = 'center';
-      subtitle.style.marginBottom = k.spacingMedium;
+      subtitle.style.marginBottom = k.spacingSmall;
       subtitle.style.fontSize = '30';
       leftSide.appendChild(subtitle);
+    }
+
+    var teamName;
+    if (this.teamName != "" && this.teamName !== undefined) {
+      teamName = document.createElement('h3');
+      teamName.textContent = "by team " + this.teamName;
+      teamName.style.textAlign = 'center';
+      teamName.style.marginBottom = k.spacingMedium;
+      teamName.style.fontSize = '30';
+      leftSide.appendChild(teamName);
     }
 
     var team;
@@ -76,7 +87,7 @@ export class PerformanceRep {
     rightSide.style.maxWidth = '50%'
 
     var perfVideoPlayer;
-    if (this.perfVideoURL) {
+    if (this.perfVideoURL != "" && this.perfVideoURL !== undefined) {
       perfVideoPlayer = document.createElement('div')
       perfVideoPlayer.id = this.perfDomId
       perfVideoPlayer.style.backgroundColor = "#FE0f23";
@@ -84,7 +95,7 @@ export class PerformanceRep {
     }
 
     var fancamVideoPlayer;
-    if (this.fancamVideoURL) {
+    if (this.fancamVideoURL != "" && this.fancamVideoURL !== undefined) {
       fancamVideoPlayer = document.createElement('div')
       fancamVideoPlayer.id = this.fancamDomId
       fancamVideoPlayer.style.backgroundColor = "#FE0f23";

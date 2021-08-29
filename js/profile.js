@@ -80,6 +80,7 @@ function createPerformanceRep(person, performance) {
     case videos.CONNECT:
       perfBuilder.title = "Connect Mission";
       perfBuilder.subtitle =  "\"" + person.connectPerformance.name + "\"";
+      perfBuilder.teamName = person.connectPerformance.teamName;
       perfBuilder.perfVideoURL = person.connectPerformance.perfURL;
       perfBuilder.fancamVideoURL = person.connectPerformance.fancamURL;
       perfProperty = "connectPerformance";

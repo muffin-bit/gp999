@@ -52,7 +52,6 @@ export class Person {
     imageCropDiv.style.backgroundPosition = '55% 25%';
     imageCropDiv.style.backgroundSize = '160%';
 
-    // imageCropDiv.appendChild(img);
     var a = document.createElement('a');
     a.href = 'profile.html?id=' + this.id
     a.style.marginBottom = '8px';
