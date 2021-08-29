@@ -11,7 +11,7 @@ class Header extends HTMLElement {
           <div class="leftnav">
             <a href="index.html">Home</a>
             <a href="contestants.html">Contestants</a>
-            <a href="performances.html">Performances</a>
+            <a href="rankings.html">Rankings</a>
           </div>
           <div class="rightnav">
             <p>Made by Muffin and Pie</p>

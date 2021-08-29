@@ -22,6 +22,7 @@ export class PerformanceRep {
 
     var leftAndRightSides = document.createElement('div');
     leftAndRightSides.className = 'centeredRow';
+    leftAndRightSides.style.alignItems = 'flex-start';
 
     // LEFT
     var leftSide = document.createElement('div');
@@ -63,6 +64,7 @@ export class PerformanceRep {
     if (this.teammates.length > 0) {
       team = document.createElement('div');
       team.className = 'centeredRow';
+      team.style.alignItems = 'flex-start';
       team.style.display = 'flex'
       team.style.marginBottom = k.spacingMedium
       for (let person of this.teammates) {

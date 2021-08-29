@@ -31,6 +31,8 @@ export class Person {
       position: row["Connect Position"],
       perfURL: row["Connect URL"],
       fancamURL: row["Connect Fancam URL"],
+      cellMates: row["New Cell Mates"],
+      cellPrelimRank: row["New Cell Prelim Rank"]
     };
     this.newCell = {
       prelimRank: row["New Cell Prelim Rank"],
@@ -49,7 +51,7 @@ export class Person {
     imageCropDiv.style.backgroundImage = 'url(img/ProfilePics/' + this.id + '_ProfilePic1.jpg)'
     imageCropDiv.style.backgroundSize = 'cover';
     imageCropDiv.style.backgroundRepeat = 'contain';
-    imageCropDiv.style.backgroundPosition = '55% 25%';
+    imageCropDiv.style.backgroundPosition = '50% 25%';
     imageCropDiv.style.backgroundSize = '160%';
 
     var a = document.createElement('a');

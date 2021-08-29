@@ -25,7 +25,7 @@ function parseLine(row) {
 
 // Generate visual elements
 function showProfile(data, girlId) {
-  let person = contestants[girlId]
+  let person = contestants[girlId];
   createProfileHeaderForPerson(person);
   createPerformanceRep(person, videos.AUDITION);
   createPerformanceRep(person, videos.CONNECT);
