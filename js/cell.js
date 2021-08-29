@@ -1,0 +1,37 @@
+"use strict";
+
+import * as k from './constants.js'
+import { Person } from './person.js';
+
+export class CellRep {
+
+  constructor(builder) {
+    this.members = builder.members;
+    this.rank = parseInt(builder.rank);
+  }
+
+  get rep() {
+    var div = document.createElement('div');
+    div.className = 'cell centeredRow'
+    div.style.margin = k.spacingSmall
+
+    // Rank
+    var rankText = document.createElement('h3');
+    rankText.textContent = this.rank;
+    rankText.style.textAlign = 'center';
+    rankText.style.fontSize = '30';
+    rankText.style.width = 60;
+    div.appendChild(rankText);
+
+    // People
+    var peopleDiv = document.createElement('div');
+    peopleDiv.className = 'centeredRow cellRepPeople';
+    div.appendChild(peopleDiv);
+
+    for (let person of this.members) {
+      var personRep = person.smallRep;
+      peopleDiv.appendChild(personRep);
+    }
+    return div;
+  }
+}
