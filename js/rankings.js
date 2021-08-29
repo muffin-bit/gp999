@@ -47,6 +47,7 @@ function processCells() {
 function showRankings() {
   var rankingsDescription = document.getElementById("rankingsDescription");
   rankingsDescription.style.marginBottom = k.spacingMedium;
+  rankingsDescription.style.fontFamily = "DXWooriGoStd";
 
   var rankingsList = document.getElementById("rankingsList");
   rankingsList.className = "centeredColumn";

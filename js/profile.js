@@ -87,11 +87,13 @@ function createPerformancesAndRankingsForPerson(person) {
   var signalSong = document.createElement("h3");
   signalSong.textContent = "Signal Song (O.O.O):    " + person.group + person.signalSong.rank;
   signalSong.style.marginBottom = k.spacingSmall;
+  signalSong.style.fontFamily = "DXWooriGoStd";
   rankingsDiv.appendChild(signalSong);
 
   var ep3Ranking = document.createElement("h3");
   ep3Ranking.textContent = "First elimination prelim cell results:    " + person.connectPerformance.cellPrelimRank;
   ep3Ranking.style.marginBottom = k.spacingSmall;
+  ep3Ranking.style.fontFamily = "DXWooriGoStd";
   rankingsDiv.appendChild(ep3Ranking);
 
   document.getElementById("performancesList").appendChild(rankingsDiv);

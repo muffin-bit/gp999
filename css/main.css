@@ -4,6 +4,11 @@
     src: url("font/azonix/Azonix.otf") format("opentype");
 }
 
+@font-face {
+    font-family: DXWooriGoStd;
+    src: url("font/DXWooriGoStd-M.woff") format("woff");
+}
+
 * {
   font-family: AzonixCustom; /* Open Sans; */
   margin: 0;

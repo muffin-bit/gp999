@@ -47,16 +47,18 @@ export class PerformanceRep {
       subtitle.style.textAlign = 'center';
       subtitle.style.marginBottom = k.spacingSmall;
       subtitle.style.fontSize = '30';
+      subtitle.style.fontFamily = "DXWooriGoStd";
       leftSide.appendChild(subtitle);
     }
 
     var teamName;
     if (this.teamName != "" && this.teamName !== undefined) {
       teamName = document.createElement('h3');
-      teamName.textContent = "by team " + this.teamName;
+      teamName.textContent = "by Team " + this.teamName;
       teamName.style.textAlign = 'center';
       teamName.style.marginBottom = k.spacingMedium;
       teamName.style.fontSize = '30';
+      teamName.style.fontFamily = "DXWooriGoStd";
       leftSide.appendChild(teamName);
     }
 
