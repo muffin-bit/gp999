@@ -120,4 +120,21 @@ h1 {
   font-size: 11px;
 }
 
+.floatingButton{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:30px;
+	right:30px;
+	background-color:#caa0eb;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.floatingButtonContent{
+	margin-top:16px;
+}
+
 /*# sourceMappingURL=main.css.map */

@@ -1,14 +1,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:fb="http://ogp.me/ns/fb#">
 <head>
+    <!-- To scale nicely on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- Javascript -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/d3.v4.min.js" charset="utf-8"></script>
-    <script src="components/navbar.js" type="text/javascript" defer></script>
+    <script src="js/components/navbar.js" type="text/javascript" defer></script>
+    <script src="js/components/floating-feedback-button.js" type="text/javascript" defer></script>
 
     <!-- Styling -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- Meta Info -->
     <link rel="icon" type="image/jpg" sizes="32x32" href="img/Girls_Planet_999_Logo_EN.png">
@@ -17,6 +22,7 @@
 </head>
 <body>
     <navbar-component></navbar-component>
+    <floating-feedback-button></floating-feedback-button>
     <p>Girls Planet 999 is a great show!</p>
 </body>
 </html>
