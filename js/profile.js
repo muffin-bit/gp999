@@ -115,6 +115,7 @@ function createPerformancesAndRankingsForPerson(person) {
   document.getElementById("performancesList").appendChild(rankingsDiv);
 
   // PERFORMANCES
+  createPerformanceRep(person, videos.PR);
   createPerformanceRep(person, videos.OOO);
   createPerformanceRep(person, videos.AUDITION);
   createPerformanceRep(person, videos.CONNECT);
@@ -125,8 +126,12 @@ function createPerformanceRep(person, performance) {
   var perfBuilder = {};
   var perfProperty = "";
   switch(performance){
+    case videos.PR:
+      perfBuilder.title = "PR Intro";
+      perfBuilder.fancamURL = person.prVideo.fancamURL;
+      perfProperty = "prVideo";
+      break;
     case videos.OOO:
-      debugger;
       perfBuilder.title = "Signal Song";
       perfBuilder.subtitle = "(O.O.O)";
       perfBuilder.fancamURL = person.signalSong.fancamURL;
@@ -153,7 +158,7 @@ function createPerformanceRep(person, performance) {
 
   // Get teammates
   var teammates = []
-  if (performance != videos.OOO) { // Awkward to show teammates for signal song solos
+  if (performance != videos.OOO && performance != videos.PR) { // Awkward to show teammates for signal song solos
     for (let c in contestants) {
       if (contestants[c][perfProperty].id == person[perfProperty].id) {
         teammates.push(contestants[c]);

@@ -21,6 +21,10 @@ export class Person {
       fancamURL: row["Signal Song Video URL"],
       rank: row["Signal Song Rank"]
     },
+    this.prVideo = {
+      id: row["PR Video URL"],
+      fancamURL: row["PR Video URL"],
+    },
     this.auditionPerformance = {
       id: row["Audition Song"],
       name: row["Audition Song"],
