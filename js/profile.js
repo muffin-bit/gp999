@@ -69,8 +69,6 @@ function createProfileHeaderForPerson(person) {
 function createPerformancesAndRankingsForPerson(person) {
   var performancesList = document.getElementById("performancesList");
 
-  // RANKINGS
-
   var rankingsDiv = document.createElement("h3")
   rankingsDiv.className = "centeredColumn";
   rankingsDiv.style.width = "100%";
@@ -117,6 +115,7 @@ function createPerformancesAndRankingsForPerson(person) {
   document.getElementById("performancesList").appendChild(rankingsDiv);
 
   // PERFORMANCES
+  createPerformanceRep(person, videos.OOO);
   createPerformanceRep(person, videos.AUDITION);
   createPerformanceRep(person, videos.CONNECT);
 }
@@ -126,18 +125,25 @@ function createPerformanceRep(person, performance) {
   var perfBuilder = {};
   var perfProperty = "";
   switch(performance){
+    case videos.OOO:
+      debugger;
+      perfBuilder.title = "Signal Song";
+      perfBuilder.subtitle = "(O.O.O)";
+      perfBuilder.fancamURL = person.signalSong.fancamURL;
+      perfProperty = "signalSong";
+      break;
     case videos.AUDITION:
       perfBuilder.title = "Audition Mission";
       perfBuilder.subtitle = "\"" + person.auditionPerformance.name + "\"";
-      perfBuilder.perfVideoURL = person.auditionPerformance.perfURL;
+      perfBuilder.perfURL = person.auditionPerformance.perfURL;
       perfProperty = "auditionPerformance";
       break;
     case videos.CONNECT:
       perfBuilder.title = "Connect Mission";
       perfBuilder.subtitle =  "\"" + person.connectPerformance.name + "\"";
       perfBuilder.teamName = person.connectPerformance.teamName;
-      perfBuilder.perfVideoURL = person.connectPerformance.perfURL;
-      perfBuilder.fancamVideoURL = person.connectPerformance.fancamURL;
+      perfBuilder.perfURL = person.connectPerformance.perfURL;
+      perfBuilder.fancamURL = person.connectPerformance.fancamURL;
       perfProperty = "connectPerformance";
       break;
     default:
@@ -147,9 +153,11 @@ function createPerformanceRep(person, performance) {
 
   // Get teammates
   var teammates = []
-  for (let c in contestants) {
-    if (contestants[c][perfProperty].id == person[perfProperty].id) {
-      teammates.push(contestants[c]);
+  if (performance != videos.OOO) { // Awkward to show teammates for signal song solos
+    for (let c in contestants) {
+      if (contestants[c][perfProperty].id == person[perfProperty].id) {
+        teammates.push(contestants[c]);
+      }
     }
   }
   perfBuilder.teammates = teammates;
@@ -164,11 +172,11 @@ function createPerformanceRep(person, performance) {
 function youtubeAPILoaded() {
   for (let perf of performances) {
     let videos = []
-    if (perf.perfVideoURL) {
-      videos.push([perf.perfVideoURL, perf.perfDomId]);
+    if (perf.perfURL) {
+      videos.push([perf.perfURL, perf.perfDomId]);
     }
-    if (perf.fancamVideoURL) {
-      videos.push([perf.fancamVideoURL, perf.fancamDomId]);
+    if (perf.fancamURL) {
+      videos.push([perf.fancamURL, perf.fancamDomId]);
     }
 
     for (let tuple of videos) {

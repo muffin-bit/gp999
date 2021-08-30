@@ -17,7 +17,8 @@ export class Person {
     this.heightCM = row["Height (cm)"];
     this.heightIN = row["Height (in)"];
     this.signalSong = {
-      perfURL: row["Signal Song Video URL"],
+      id: row["Signal Song Video URL"],
+      fancamURL: row["Signal Song Video URL"],
       rank: row["Signal Song Rank"]
     },
     this.auditionPerformance = {

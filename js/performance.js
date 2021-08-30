@@ -9,8 +9,8 @@ export class PerformanceRep {
     this.subtitle = builder.subtitle;
     this.teammates = builder.teammates;
     this.teamName = builder.teamName;
-    this.perfVideoURL = builder.perfVideoURL;
-    this.fancamVideoURL = builder.fancamVideoURL;
+    this.perfURL = builder.perfURL;
+    this.fancamURL = builder.fancamURL;
     this.perfDomId = builder.title + "-perfVideo";
     this.fancamDomId = builder.title + "-fancamVideo";
   }
@@ -91,7 +91,7 @@ export class PerformanceRep {
     rightSide.style.maxWidth = '50%'
 
     var perfVideoPlayer;
-    if (this.perfVideoURL != "" && this.perfVideoURL !== undefined) {
+    if (this.perfURL != "" && this.perfURL !== undefined) {
       perfVideoPlayer = document.createElement('div')
       perfVideoPlayer.id = this.perfDomId
       perfVideoPlayer.style.backgroundColor = "#FE0f23";
@@ -99,11 +99,13 @@ export class PerformanceRep {
     }
 
     var fancamVideoPlayer;
-    if (this.fancamVideoURL != "" && this.fancamVideoURL !== undefined) {
+    if (this.fancamURL != "" && this.fancamURL !== undefined) {
       fancamVideoPlayer = document.createElement('div')
       fancamVideoPlayer.id = this.fancamDomId
       fancamVideoPlayer.style.backgroundColor = "#FE0f23";
-      fancamVideoPlayer.style.marginTop = k.spacingMedium;
+      if (perfVideoPlayer !== undefined) {
+        fancamVideoPlayer.style.marginTop = k.spacingMedium;
+      }
       rightSide.appendChild(fancamVideoPlayer);
     }
 
