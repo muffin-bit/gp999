@@ -45,6 +45,10 @@ function processCells() {
 
 // Generate visual elements
 function showRankings() {
+  var moreComingSoon = document.getElementById("rankingsMoreComing");
+  moreComingSoon.style.marginBottom = k.spacingMedium;
+  moreComingSoon.style.fontFamiliy = "DXWooriGoStd";
+
   var rankingsDescription = document.getElementById("rankingsDescription");
   rankingsDescription.style.marginBottom = k.spacingMedium;
   rankingsDescription.style.fontFamily = "DXWooriGoStd";
