@@ -48,10 +48,8 @@ function showVotingInfo() {
   votingOpenClosed.style.textAlign = 'center';
   votingHeaderDiv.appendChild(votingOpenClosed);
 
-
-  var votingDescription = document.getElementById("votingDescription");
-  votingDescription.style.fontFamily = "DXWooriGoStd";
-  votingDescription.style.lineHeight = k.psacingMedium;
+  // var votingDescription = document.getElementById("votingDescription");
+  // votingDescription.style.lineHeight = k.psacingMedium;
   return true;
 }
 

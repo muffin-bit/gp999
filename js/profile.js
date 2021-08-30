@@ -68,11 +68,12 @@ function createProfileHeaderForPerson(person) {
 
 function createPerformancesAndRankingsForPerson(person) {
   var performancesList = document.getElementById("performancesList");
+  performancesList.style.marginTop = k.spacingXLarge
 
-  var rankingsDiv = document.createElement("h3")
+  var rankingsDiv = document.createElement("div")
   rankingsDiv.className = "centeredColumn";
   rankingsDiv.style.width = "100%";
-  rankingsDiv.style.marginBottom = k.spacingXLarge;
+  rankingsDiv.style.marginBottom = k.spacingMedium;;
 
   var rankingsTitle = document.createElement('h3');
   rankingsTitle.textContent = "Rankings";
@@ -81,8 +82,8 @@ function createPerformancesAndRankingsForPerson(person) {
   rankingsTitle.style.fontSize = '50';
   rankingsDiv.appendChild(rankingsTitle);
 
-  var rankingsContentDiv = document.createElement("h3")
-  rankingsContentDiv.className = "leftAlignedColumn";
+  var rankingsContentDiv = document.createElement("div")
+  rankingsContentDiv.className = "leftAlignedColumn profileRankingsContent";
   rankingsContentDiv.style.marginBottom = k.spacingXLarge;
   rankingsDiv.appendChild(rankingsContentDiv);
 
@@ -192,8 +193,8 @@ function youtubeAPILoaded() {
 
       if (vidDomId) {
         var player = new YT.Player(vidDomId, {
-          height: '312',
-          width: '512',
+          height: '280',
+          width: '460',
           videoId: videoId,
           playerVars: {
             'playsinline': 1

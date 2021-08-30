@@ -49,9 +49,9 @@ function showRankings() {
   moreComingSoon.style.marginBottom = k.spacingMedium;
   moreComingSoon.style.fontFamiliy = "DXWooriGoStd";
 
-  var rankingsDescription = document.getElementById("rankingsDescription");
-  rankingsDescription.style.marginBottom = k.spacingMedium;
-  rankingsDescription.style.fontFamily = "DXWooriGoStd";
+  // var rankingsDescription = document.getElementById("rankingsDescription");
+  // rankingsDescription.style.marginBottom = k.spacingMedium;
+  // rankingsDescription.style.fontFamily = "DXWooriGoStd";
 
   var rankingsList = document.getElementById("rankingsList");
   rankingsList.className = "centeredColumn";

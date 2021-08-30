@@ -54,7 +54,7 @@ export class PerformanceRep {
     var teamName;
     if (this.teamName != "" && this.teamName !== undefined) {
       teamName = document.createElement('h3');
-      teamName.textContent = "by Team " + this.teamName;
+      teamName.textContent = "Team " + this.teamName;
       teamName.style.textAlign = 'center';
       teamName.style.marginBottom = k.spacingMedium;
       teamName.style.fontSize = '30';

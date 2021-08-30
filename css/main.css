@@ -102,14 +102,12 @@ h1 {
   height: 25vw;
   background-size: 100%;;
   background-position: 50% 25%;
-  border-radius: 10px;
+  border-radius: 1.8vw;
 }
 
 .smallProfileNameDiv {
   height: 4vw;
 }
-
-
 
 .centeredColumn {
   display: flex;
@@ -191,7 +189,7 @@ h1 {
   font-size: 40px;
 }
 
-.votingDescription {
+.paragraphDescription {
   margin-bottom: 14px;
   line-height: 24px;
   font-family: "DXWooriGoStd";

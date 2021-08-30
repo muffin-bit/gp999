@@ -70,20 +70,6 @@ function createProfileDivForPerson(person) {
     document.getElementById("contestantsGrid").appendChild(div);
 }
 
-function setupFilters() {
-  var KFilterButton = document.getElementById("KFilterButton");
-  KFilterButton.addEventListener('click', filterProfilesToK);
-
-  var JFilterButton = document.getElementById("JFilterButton");
-  JFilterButton.addEventListener('click', filterProfilesToJ);
-
-  var CFilterButton = document.getElementById("CFilterButton");
-  CFilterButton.addEventListener('click', filterProfilesToC);
-
-  var resetFilterButton = document.getElementById("resetFilterButton");
-  resetFilterButton.addEventListener('click', resetFilters);
-}
-
 function filterProfilesToK() {
   filterProfiles(true, false, false);
 }
@@ -94,6 +80,10 @@ function filterProfilesToJ() {
 
 function filterProfilesToC() {
   filterProfiles(false, true, false);
+}
+
+function resetFilters() {
+  filterProfiles(true, true, true);
 }
 
 function filterProfiles(KGroupShowing, CGroupShowing, JGroupShowing) {
@@ -108,13 +98,13 @@ function filterProfiles(KGroupShowing, CGroupShowing, JGroupShowing) {
   resetFilterButton.classList.remove("activeFilterButton");
 
   if (KGroupShowing && CGroupShowing && JGroupShowing) {
-    resetFilterButton.className += "activeFilterButton"
+    resetFilterButton.className += " activeFilterButton"
   } else if (KGroupShowing) {
-    KFilterButton.className += "activeFilterButton"
+    KFilterButton.className += " activeFilterButton"
   } else if (CGroupShowing) {
-    CFilterButton.className += "activeFilterButton"
+    CFilterButton.className += " activeFilterButton"
   } else if (JGroupShowing) {
-    JFilterButton.className += "activeFilterButton"
+    JFilterButton.className += " activeFilterButton"
   }
 
   // Do the actual filtering of visible profiles
@@ -137,8 +127,18 @@ function filterProfiles(KGroupShowing, CGroupShowing, JGroupShowing) {
   }
 }
 
-function resetFilters() {
-  filterProfiles(true, true, true);
+function setupFilters() {
+  var KFilterButton = document.getElementById("KFilterButton");
+  KFilterButton.addEventListener('click', filterProfilesToK);
+
+  var JFilterButton = document.getElementById("JFilterButton");
+  JFilterButton.addEventListener('click', filterProfilesToJ);
+
+  var CFilterButton = document.getElementById("CFilterButton");
+  CFilterButton.addEventListener('click', filterProfilesToC);
+
+  var resetFilterButton = document.getElementById("resetFilterButton");
+  resetFilterButton.addEventListener('click', resetFilters);
 }
 
 window.addEventListener("resize", function(event) {

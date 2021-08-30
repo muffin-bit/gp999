@@ -1,13 +1,10 @@
 #profileHeader {
-  width: 80%;
-  margin: auto;
 }
 
 #profileDetails {
-  width: 40%;
+  width: 50%;
   height: 600px;
-  padding: 40px;
-  padding-top: 80px;
+  padding: 20px;
   display: inline-block;
   text-align: center;
   vertical-align: top;
@@ -29,21 +26,18 @@
   font-size: 80px;
 }
 
-#profileGroupAndNames {
-  vertical-align: middle;
-}
-
 #profileNamesNonEnglish {
   text-align: center;
   display: inline-block;;
   vertical-align: middle;
+  font-size: 24px;
+  color: #4F4F4F;
 }
 
 #profileGroup {
   font-size: 50px;
   line-height: 1.2;
   display: inline-block;
-  margin-right: 40px;
   vertical-align: middle;
   border-style: solid;
   border-radius: 50%;
@@ -52,21 +46,48 @@
   height:80px;
 }
 
-#profileHeaderNameKorean {
-  font-size: 30px;
-  color: #4F4F4F;
-}
-
-#profileHeaderNameChinese {
-  font-size: 30px;
-  color: #4F4F4F;
-}
-
-#profileHeaderNameJapanese {
-  font-size: 30px;
-  color: #4F4F4F;
-}
-
 #profileDetailsBody {
   text-align: left;
+}
+
+.profileRankingsContent {
+  font-size: 24px;
+}
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px) {
+  #profileHeaderNameEnglish {
+    font-size: 14vw;
+  }
+
+  #profileDetails {
+    width: 100%;
+    padding: 0px;
+  }
+
+  #profileHeaderImageWrapper {
+    width: 100%;
+    padding: 0px;
+    display: block;
+  }
+
+  #profileGroup {
+    font-size: 40px;
+    line-height: 1.1;
+    display: inline-block;
+    vertical-align: middle;
+    border-style: solid;
+    border-radius: 50%;
+    padding: 18px;
+    width:50px;
+    height:50px;
+  }
+
+  profileNamesNonEnglish {
+    font-size: 18px;
+  }
+
+  .profileRankingsContent {
+    font-size: 14px;
+  }
 }
