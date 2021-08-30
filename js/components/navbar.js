@@ -9,9 +9,9 @@ class Header extends HTMLElement {
         <img src="img/Girls_Planet_999_Logo_EN.png">
         <div class="topnav">
           <div class="leftnav">
-            <a href="index.html">Home</a>
             <a href="contestants.html">Contestants</a>
             <a href="rankings.html">Rankings</a>
+            <a href="voting.html">Voting</a>
           </div>
           <div class="rightnav">
             <p>Made by Muffin and Pie</p>

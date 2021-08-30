@@ -19,6 +19,9 @@
 body {
   background: linear-gradient(135deg, rgb(255, 247, 253), rgb(238, 226, 252));
   font-size: 14px;
+}
+
+.bodyContent {
   margin: 0px 100px;
 }
 

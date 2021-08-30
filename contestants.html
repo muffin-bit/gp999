@@ -24,14 +24,16 @@
 <body>
     <navbar-component></navbar-component>
     <floating-feedback-button></floating-feedback-button>
-    <div id="contestantsFilters">
-      <button type="button" class="activeFilterButton" id="resetFilterButton" id="resetFiltersButton" onclick="resetFilters()">All</button>
-      <button type="button" id="CFilterButton">C Group</button>
-      <button type="button" id="KFilterButton">K Group</button>
-      <button type="button" id="JFilterButton">J Group</button>
-    </div>
-    <div id="contestantsGrid"></div>
+    <div id="bodyContent">
+      <div id="contestantsFilters">
+        <button type="button" class="activeFilterButton" id="resetFilterButton" id="resetFiltersButton" onclick="resetFilters()">All</button>
+        <button type="button" id="CFilterButton">C Group</button>
+        <button type="button" id="KFilterButton">K Group</button>
+        <button type="button" id="JFilterButton">J Group</button>
+      </div>
+      <div id="contestantsGrid"></div>
 
+    </div>
     <script type="module" src="js/contestants.js"></script>
 </body>
 </html>
