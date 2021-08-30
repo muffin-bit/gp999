@@ -24,29 +24,48 @@ function createProfileDivForPerson(person) {
     var div = document.createElement('div');
     div.className = 'smallProfile ' + person.group + 'Group'; // Two DOM classes
 
-    var img = document.createElement('img');
-    img.setAttribute('src', 'img/ProfilePics/' + person.id + '_ProfilePic1.jpg');
-    img.style.display = 'block';
-    img.style.width = '100%';
-    img.style.borderRadius = '10%';
-    img.style.marginBottom = k.spacingTiny;
+    var imageCropDiv = document.createElement('div');
+    imageCropDiv.className = 'smallProfileImage';
+    imageCropDiv.style.backgroundImage = 'url(img/ProfilePics/' + person.id + '_ProfilePic1.jpg)'
+    imageCropDiv.style.marginBottom = k.spacingTiny;
 
     var a = document.createElement('a');
     a.href = 'profile.html?id=' + person.id
-    a.appendChild(img)
+    a.appendChild(imageCropDiv);
     div.appendChild(a);
 
-    var nameEnglish = document.createElement('h3');
-    nameEnglish.textContent = person.nameEnglish;
-    nameEnglish.style.textAlign = 'center';
-    nameEnglish.style.marginBottom = k.spacingTiny;
-    div.appendChild(nameEnglish);
+    var namesDiv = document.createElement('div');
+    namesDiv.className = "smallProfileNameDiv";
+    div.appendChild(namesDiv);
+
+    // DESKTOP
+    var nameEnglishDesktop = document.createElement('h3');
+    nameEnglishDesktop.className = 'contestantNameTitle desktopOnly';
+    nameEnglishDesktop.textContent = person.nameEnglish;
+    nameEnglishDesktop.style.marginBottom = k.spacingTiny;
+    namesDiv.appendChild(nameEnglishDesktop);
+
+    // MOBILE
+    var nameEnglishMobile = document.createElement('div');
+    nameEnglishMobile.className = 'contestantNameTitle mobileOnly';
+    nameEnglishMobile.style.marginBottom = k.spacingTiny;
+
+    let splitName = person.nameEnglish.split(" ");
+    var namePartOneMobile = document.createElement('h3');
+    namePartOneMobile.textContent = splitName[0];
+    var namePartTwoMobile = document.createElement('h3');
+    namePartTwoMobile.textContent = splitName[1];
+
+    nameEnglishMobile.appendChild(namePartOneMobile);
+    nameEnglishMobile.appendChild(namePartTwoMobile);
+
+    namesDiv.appendChild(nameEnglishMobile);
 
     var nameKorean = document.createElement('h3');
+    nameKorean.className = 'contestantNameSubtitle';
     nameKorean.textContent = person.nameKorean;
-    nameKorean.style.textAlign = 'center';
     nameKorean.style.marginBottom = k.spacingTiny;
-    div.appendChild(nameKorean);
+    namesDiv.appendChild(nameKorean);
 
     document.getElementById("contestantsGrid").appendChild(div);
 }
@@ -122,12 +141,32 @@ function resetFilters() {
   filterProfiles(true, true, true);
 }
 
+window.addEventListener("resize", function(event) {
+  configurefilters();
+})
+
+function configurefilters() {
+  var KFilterButton = document.getElementById("KFilterButton");
+  var JFilterButton = document.getElementById("JFilterButton");
+  var CFilterButton = document.getElementById("CFilterButton");
+  if (document.body.clientWidth <= 800) {
+    KFilterButton.textContent = "K";
+    JFilterButton.textContent = "J";
+    CFilterButton.textContent = "C";
+  } else {
+    KFilterButton.textContent = "K Group";
+    JFilterButton.textContent = "J Group";
+    CFilterButton.textContent = "C Group";
+  }
+}
+
 function main() {
   // Get data
   d3.csv("https://muffin-bit.github.io/gp999/data.csv", parseLine, function (err, data) {
       showProfiles(data);
   });
   setupFilters();
+  configurefilters();
 }
 
 main()

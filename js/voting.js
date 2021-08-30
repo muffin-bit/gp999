@@ -32,22 +32,26 @@ function showVotingInfo() {
   votingHeaderDiv.style.padding = k.spacingMedium;
   votingHeaderDiv.style.borderStyle = 'solid';
   votingHeaderDiv.style.borderRadius = '20px';
-  votingHeaderDiv.style.marginBottom = k.spacingSmall;
+  votingHeaderDiv.style.marginBottom = k.spacingMedium;
 
   var votingHeader = document.createElement("h3");
+  votingHeader.className = "mediumText";
   votingHeader.textContent = "Voting is currently";
-  votingHeader.style.fontSize = '50';
-  votingHeader.style.marginBottom = k.spacingSmall;
+  votingHeader.style.textAlign = 'center';
+  votingHeader.style.marginBottom = k.spacingMedium;
+  votingHeader.style.marginTop = k.spacingSmall;
   votingHeaderDiv.appendChild(votingHeader);
 
   var votingOpenClosed = document.createElement("h3");
+  votingOpenClosed.className = "largeText";
   votingOpenClosed.textContent = (isOpen ? "Open" : "Closed");
-  votingOpenClosed.style.fontSize = '70';
+  votingOpenClosed.style.textAlign = 'center';
+  votingHeaderDiv.appendChild(votingOpenClosed);
 
 
   var votingDescription = document.getElementById("votingDescription");
   votingDescription.style.fontFamily = "DXWooriGoStd";
-  votingDescription.style.lineHeight = k.spacingMedium;
+  votingDescription.style.lineHeight = k.psacingMedium;
   return true;
 }
 

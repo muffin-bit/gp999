@@ -1,11 +1,11 @@
 #contestantsGrid {
-  margin-left: 40px;
-  margin-right: 40px;
+  /* margin-left: 40px;
+  margin-right: 40px; */
   text-align: center;
 }
 
 #contestantsFilters {
-  width: 40%;
+  width: 600px;
   text-align: center;
   margin: auto;
   background-color: #3f0d54;
@@ -13,7 +13,7 @@
   margin-bottom: 24px;
 }
 
-button {
+.contestantFilterButton {
   background-color: #3f0d54;
   border: none;
   color: grey;
@@ -21,8 +21,57 @@ button {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 20px;
+}
+
+.contestantNameTitle {
+  font-size: 1.7vw;
+  height:  2vw;
+  text-align: : center;
+}
+
+.contestantNameSubtitle {
+  font-size: 1.6vw;
+  height:  2vw;
+  text-align: : center;
+}
+
+.desktopOnly {
+  display: block;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px) {
+  .mobileOnly {
+    display: block;
+  }
+  .desktopOnly {
+    display: none;
+  }
+  .contestantNameTitle {
+    font-size: 2.4vw;
+    height:  5.8vw;
+    vertical-align: center;
+  }
+
+  .contestantNameSubtitle {
+    font-size: 2.5vw;
+    height:  2.5vw;
+  }
+
+  #contestantsFilters {
+    width: 78%;
+  }
+
+  .contestantFilterButton {
+    font-size: 4vw;
+    padding: 15px 15px;
+  }
 }
 
 .activeFilterButton {
