@@ -68,7 +68,6 @@ function createProfileHeaderForPerson(person) {
 
 function createPerformancesAndRankingsForPerson(person) {
   var performancesList = document.getElementById("performancesList");
-  // performancesList.style.margin = "0px 80px";
 
   // RANKINGS
 
@@ -95,8 +94,22 @@ function createPerformancesAndRankingsForPerson(person) {
   signalSong.style.fontFamily = "DXWooriGoStd";
   rankingsContentDiv.appendChild(signalSong);
 
+  var top9Candidate = document.createElement("h3");
+  top9Candidate.textContent = "Audition Mission Top 9 candidate:    " + (person.auditionPerformance.top9Candidate == "Y" ? "Yes" : "No");
+  top9Candidate.style.marginBottom = k.spacingSmall;
+  top9Candidate.style.fontFamily = "DXWooriGoStd";
+  rankingsContentDiv.appendChild(top9Candidate);
+
+  if (person.auditionPerformance.top9Rank != "" && person.auditionPerformance.top9Rank !== undefined) {
+    var top9Rank = document.createElement("h3");
+    top9Rank.textContent = "Audition Mission Top 9 rank:    " + person.auditionPerformance.top9Rank
+    top9Rank.style.marginBottom = k.spacingSmall;
+    top9Rank.style.fontFamily = "DXWooriGoStd";
+    rankingsContentDiv.appendChild(top9Rank);
+  }
+
   var ep3Ranking = document.createElement("h3");
-  ep3Ranking.textContent = "First elimination prelim cell results:    " + person.connectPerformance.cellPrelimRank;
+  ep3Ranking.textContent = "First elimination prelim cell rank:    " + person.connectPerformance.cellPrelimRank;
   ep3Ranking.style.marginBottom = k.spacingSmall;
   ep3Ranking.style.fontFamily = "DXWooriGoStd";
   rankingsContentDiv.appendChild(ep3Ranking);

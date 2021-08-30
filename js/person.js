@@ -24,8 +24,8 @@ export class Person {
       id: row["Audition Song"],
       name: row["Audition Song"],
       perfURL: row["Audition URL"],
-      top9candidate: row["Audition Top 9 Candidate"],
-      top9rank: row["Ep 2 Top 9 Ranking"]
+      top9Candidate: row["Audition Top 9 Candidate"],
+      top9Rank: row["Ep 2 Top 9 Ranking"]
     };
     this.connectPerformance = {
       id: row["Connect URL"],
