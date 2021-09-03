@@ -11,11 +11,9 @@ class Header extends HTMLElement {
         </div>
         <img id="logo" src="img/Girls_Planet_999_Logo_EN.png">
         <div class="topnav">
-          <div class="leftnav">
-            <a href="contestants.html">Contestants</a>
-            <a href="connect_prelim_rankings.html">Rankings</a>
-            <a href="voting.html">Voting</a>
-          </div>
+          <a href="contestants.html">Contestants</a>
+          <a href="connect_prelim_rankings.html">Rankings</a>
+          <a href="voting.html">Voting</a>
         </div>
       </div>
     `;
@@ -23,8 +21,10 @@ class Header extends HTMLElement {
 }
 
 $(function(){
-  $('.leftnav a').each(function(){
+  $('#banner .topnav a').each(function(){
     if ($(this).prop('href') == window.location.href) {
+      $(this).addClass('current');
+    } else if ($(this).prop('href').includes('ankings') && window.location.href.includes('ankings')) {
       $(this).addClass('current');
     }
   });
