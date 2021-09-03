@@ -13,7 +13,8 @@ export class CellRep {
   get rep() {
     var div = document.createElement('div');
     div.className = 'cell centeredRow'
-    div.style.margin = k.spacingSmall
+    div.style.margin = k.spacingSmall;
+    div.style.marginRight = k.spacingLarge;
 
     // Rank
     var rankText = document.createElement('h3');

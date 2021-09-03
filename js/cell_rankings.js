@@ -35,7 +35,7 @@ function processCells() {
     for (let memberId of cellMembersArr) {  // lookup the person by id
       let person = contestants[memberId];
       cellBuilder.members.push(person);
-      cellBuilder.rank = person.connectPerformance.cellPrelimRank.rank;
+      cellBuilder.rank = getRank(person);
     }
     let cellRep = new CellRep(cellBuilder);
     cellsProcessed.add(cellRep);
@@ -43,16 +43,19 @@ function processCells() {
 
 }
 
+function getRank(person) {
+  if (window.location.pathname == "/connect_prelim_rankings.html") {
+    return person.connectPerformance.cellPrelimRank.rank;
+  } else if (window.location.pathname == "/connect_final_rankings.html") {
+    return person.connectPerformance.cellFinalRank.rank;
+  } else {
+    debugger;
+    return 0;
+  }
+}
+
 // Generate visual elements
 function showRankings() {
-  var moreComingSoon = document.getElementById("rankingsMoreComing");
-  moreComingSoon.style.marginBottom = k.spacingMedium;
-  moreComingSoon.style.fontFamiliy = "DXWooriGoStd";
-
-  // var rankingsDescription = document.getElementById("rankingsDescription");
-  // rankingsDescription.style.marginBottom = k.spacingMedium;
-  // rankingsDescription.style.fontFamily = "DXWooriGoStd";
-
   var rankingsList = document.getElementById("rankingsList");
   rankingsList.className = "centeredColumn";
 
