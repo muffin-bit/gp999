@@ -3,13 +3,36 @@
 // Imports
 import * as k from './constants.js'
 import { Person } from './person.js';
-import { CellRep } from './cell.js';
+import { RankingRep } from './ranking_rep.js';
 
 // Constants and variables
 const cellsRaw = new Set();
 const cellsProcessed = new Set();
 const contestants = {};
 const cellsSurviving = 18;
+
+// Ranking type
+const rt = {
+    SIGNAL_SONG_BY_GROUP: 'SIGNAL_SONG_BY_GROUP',
+    AUDITION_TOP_NINE: 'AUDITION_TOP_NINE',
+    CONNECT_CELL_PRELIM: 'CONNECT_CELL_PRELIM',
+    CONNECT_CELL_FINAL: 'CONNECT_CELL_FINAL',
+    CONNECT_TOP_NINE: 'CONNECT_TOP_NINE',
+    CONNECT_INDIVIDUAL_BY_GROUP: 'CONNECT_INDIVIDUAL_BY_GROUP',
+}
+
+function getRankingType() {
+  if (window.location.pathname == "/connect_prelim_rankings.html") {
+    return rt.CONNECT_CELL_PRELIM;
+  } else if (window.location.pathname == "/connect_final_rankings.html") {
+    return rt.CONNECT_CELL_FINAL;
+  } else if (window.location.pathname == "/connect_individual_rankings.html") {
+    return rt.CONNECT_INDIVIDUAL_BY_GROUP;
+  } else {
+    debugger;
+    return 0;
+  }
+}
 
 // Parse line of csv into an object
 function parseLine(row) {
@@ -37,8 +60,8 @@ function processCells() {
       cellBuilder.members.push(person);
       cellBuilder.rank = getRank(person);
     }
-    let cellRep = new CellRep(cellBuilder);
-    cellsProcessed.add(cellRep);
+    let rankingRep = new RankingRep(cellBuilder);
+    cellsProcessed.add(rankingRep);
   }
 
 }

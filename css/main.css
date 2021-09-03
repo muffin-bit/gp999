@@ -143,13 +143,17 @@ h1 {
     border-width: 2px;
 }
 
-.cellRepPeople {
+.RankingRepPeopleBackground {
   padding: 10px;
   background-color: #eed9ff;
   border-radius: 40px;
   border-style: solid;
   border-color: white;
   border-width: 2px;
+}
+
+.RankingRepPeopleNoBackground {
+  padding: 10px;
 }
 
 .eliminationDivider {

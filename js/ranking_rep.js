@@ -3,11 +3,12 @@
 import * as k from './constants.js'
 import { Person } from './person.js';
 
-export class CellRep {
+export class RankingRep {
 
   constructor(builder) {
     this.members = builder.members;
     this.rank = parseInt(builder.rank);
+    this.showBackground = parseInt(builder.rank);
   }
 
   get rep() {
@@ -26,7 +27,8 @@ export class CellRep {
 
     // People
     var peopleDiv = document.createElement('div');
-    peopleDiv.className = 'centeredRow cellRepPeople';
+    peopleDiv.className = 'centeredRow';
+    peopleDiv.className += this.showBackground ? ' RankingRepPeopleBackground' : ' RankingRepPeopleNoBackground';
     div.appendChild(peopleDiv);
 
     for (let person of this.members) {
