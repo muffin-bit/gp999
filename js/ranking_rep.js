@@ -8,7 +8,7 @@ export class RankingRep {
   constructor(builder) {
     this.members = builder.members;
     this.rank = parseInt(builder.rank);
-    this.showBackground = parseInt(builder.rank);
+    this.showBackground = parseInt(builder.showBackground);
   }
 
   get rep() {

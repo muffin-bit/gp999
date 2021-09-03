@@ -9,7 +9,7 @@ class Header2 extends HTMLElement {
         <div class="topnav" id="rankings-nav">
           <a href="connect_prelim_rankings.html">Connect Prelim</a>
           <a href="connect_final_rankings.html">Connect Final</a>
-          <a href="connect_country_rankings.html">Connect Country</a>
+          <a href="connect_rankings.html">Connect Overall</a>
         </div>
       </div>
     `;

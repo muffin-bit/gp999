@@ -29,7 +29,7 @@ function getRankingType() {
     return rt.CONNECT_CELL_PRELIM;
   } else if (window.location.pathname == "/connect_final_rankings.html") {
     return rt.CONNECT_CELL_FINAL;
-  } else if (window.location.pathname == "/connect_individual_rankings.html") {
+  } else if (window.location.pathname == "/connect_rankings.html") {
     return rt.CONNECT_INDIVIDUAL_BY_GROUP;
   } else {
     debugger;
@@ -42,6 +42,8 @@ function getRank(person) {
     return person.connectPerformance.cellPrelimRank.rank;
   } else if (getRankingType() == rt.CONNECT_CELL_FINAL) {
     return person.connectPerformance.cellFinalRank.rank;
+  } else if (getRankingType() == rt.CONNECT_INDIVIDUAL_BY_GROUP) {
+    return person.connectPerformance.individualFinalRank.rankWithinGroup;
   } else {
     debugger;
     return 0;
@@ -92,7 +94,8 @@ function processAndShowRankings() {
 
     var rankBuilder = {
       members: sortedPeople,
-      rank: rank
+      rank: rank,
+      showBackground:  getRankingType() in [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL]
     }
     const rankingRep = new RankingRep(rankBuilder);
     ranksProcessed.add(rankingRep);
@@ -101,20 +104,44 @@ function processAndShowRankings() {
   showRankings();
 }
 
+function getCountryHeader() {
+  var countryHeader = document.createElement("div");
+  countryHeader.className = "centeredRow";
+  countryHeader.style.width = "310px";
+  countryHeader.style.justifyContent = "space-between";
+  countryHeader.style.marginLeft = "24px";
+
+  var countryHeaderC = document.createElement("h3");
+  countryHeaderC.textContent = "C"
+  countryHeaderC.style.textAlign = 'center';
+  countryHeaderC.style.fontSize = '40';
+  countryHeader.appendChild(countryHeaderC);
+
+  var countryHeaderK = document.createElement("h3");
+  countryHeaderK.textContent = "K"
+  countryHeaderK.style.textAlign = 'center';
+  countryHeaderK.style.fontSize = '40';
+  countryHeader.appendChild(countryHeaderK);
+
+  var countryHeaderJ = document.createElement("h3");
+  countryHeaderJ.textContent = "J"
+  countryHeaderJ.style.textAlign = 'center';
+  countryHeaderJ.style.fontSize = '40';
+  countryHeader.appendChild(countryHeaderJ);
+
+  return countryHeader;
+}
+
 // Generate visual elements
 function showRankings() {
   var rankingsList = document.getElementById("rankingsList");
   rankingsList.className = "centeredColumn";
 
-  // var sortedCells = Array.from(ranksProcessed).sort(function(a, b) {
-  //   if (a.rank < b.rank) {
-  //     return -1;
-  //   }
-  //   if (a.rank > b.rank) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // });
+  if (getRankingType() == rt.CONNECT_INDIVIDUAL_BY_GROUP) {
+    // Show the "C K J" header
+    rankingsList.appendChild(getCountryHeader());
+
+  }
 
   for (let cell of ranksProcessed) {
     if (cell.rank == cellsSurviving) {
