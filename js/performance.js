@@ -95,7 +95,7 @@ export class PerformanceRep {
       perfVideoPlayer = document.createElement('div')
       perfVideoPlayer.id = this.perfDomId
       perfVideoPlayer.className += "youtubeVideo";
-      perfVideoPlayer.style.backgroundColor = "#FE0f23";
+      perfVideoPlayer.style.backgroundColor = "grey";
       rightSide.appendChild(perfVideoPlayer);
     }
 
@@ -104,7 +104,7 @@ export class PerformanceRep {
       fancamVideoPlayer = document.createElement('div')
       fancamVideoPlayer.id = this.fancamDomId
       fancamVideoPlayer.className += "youtubeVideo";
-      fancamVideoPlayer.style.backgroundColor = "#FE0f23";
+      fancamVideoPlayer.style.backgroundColor = "grey";
       if (perfVideoPlayer !== undefined) {
         fancamVideoPlayer.style.marginTop = k.spacingMedium;
       }
