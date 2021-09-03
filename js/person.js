@@ -67,9 +67,6 @@ export class Person {
       prelimRank: row["New Cell Prelim Rank"],
       finalRank: row["New Cell Final Rank"]
     };
-    if (this.nameEnglish == "Choi Yujin") {
-        debugger;
-    }
   }
 
   get smallRep() {

@@ -35,7 +35,7 @@ function processCells() {
     for (let memberId of cellMembersArr) {  // lookup the person by id
       let person = contestants[memberId];
       cellBuilder.members.push(person);
-      cellBuilder.rank = person.connectPerformance.cellPrelimRank;
+      cellBuilder.rank = person.connectPerformance.cellPrelimRank.rank;
     }
     let cellRep = new CellRep(cellBuilder);
     cellsProcessed.add(cellRep);
