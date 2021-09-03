@@ -32,6 +32,9 @@ function showProfile(data, girlId) {
 }
 
 function createProfileHeaderForPerson(person) {
+    var profileHeader = document.getElementById("profileHeader");
+    profileHeader.className = 'centeredRow';
+
     var img = document.getElementById("profileHeaderImage")
     img.setAttribute('src', 'img/ProfilePics/' + person.id + '_ProfilePic1.jpg');
 
