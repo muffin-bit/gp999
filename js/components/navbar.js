@@ -14,7 +14,7 @@ class Header extends HTMLElement {
             <a href="voting.html">Voting</a>
           </div>
           <div class="rightnav">
-            <p>Made by Muffin and Pie</p>
+            <p>Fansite by Muffin and Pie</p>
         </div>
         </div>
       </div>
