@@ -34,11 +34,8 @@ function showProfile(data, girlId) {
 function createProfileHeaderForPerson(person) {
     var img = document.getElementById("profileHeaderImage")
     img.setAttribute('src', 'img/ProfilePics/' + person.id + '_ProfilePic1.jpg');
-    img.style.display = 'block';
-    img.style.height = '100%';
-    img.style.borderRadius = '10%';
 
-    var nameHeader = document.getElementById("profileHeaderNameEnglish")
+    var nameHeader = document.getElementById("profileHeaderTextNameEnglish")
     nameHeader.textContent = person.nameEnglish;
 
     var nameHeader = document.getElementById("profileHeaderNameChinese")

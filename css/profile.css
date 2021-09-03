@@ -1,7 +1,8 @@
 #profileHeader {
+  width: 100%;
 }
 
-#profileDetails {
+#profileHeaderText {
   width: 50%;
   height: 600px;
   padding: 20px;
@@ -10,7 +11,7 @@
   vertical-align: top;
 }
 
-#profileDetailsHeader {
+#profileHeaderTextId {
   padding-bottom: 40px;
 }
 
@@ -22,7 +23,7 @@
   vertical-align: middle;
 }
 
-#profileHeaderNameEnglish {
+#profileHeaderTextNameEnglish {
   font-size: 80px;
 }
 
@@ -46,7 +47,7 @@
   height:80px;
 }
 
-#profileDetailsBody {
+#profileHeaderTextBody {
   text-align: left;
 }
 
@@ -54,19 +55,26 @@
   font-size: 24px;
 }
 
+#profileHeaderImage {
+  display: block;
+  height: 100%;
+  border-radius: 10%;
+}
+
 /* Use a media query to add a breakpoint at 800px: */
 @media screen and (max-width: 800px) {
-  #profileHeaderNameEnglish {
+  #profileHeaderTextNameEnglish {
     font-size: 14vw;
   }
 
-  #profileDetails {
+  #profileHeaderText {
     width: 100%;
     padding: 0px;
   }
 
   #profileHeaderImageWrapper {
-    width: 100%;
+    width: 80%;
+    height: 460px;
     padding: 0px;
     display: block;
   }
@@ -81,6 +89,7 @@
     padding: 18px;
     width:50px;
     height:50px;
+    margin-bottom: 20px;
   }
 
   profileNamesNonEnglish {
