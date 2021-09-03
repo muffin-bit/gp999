@@ -17,6 +17,7 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/d3.v4.min.js" charset="utf-8"></script>
     <script src="js/components/navbar.js" type="text/javascript" defer></script>
+    <script src="js/components/navbar-rankings.js" type="text/javascript" defer></script>
     <script src="js/components/floating-feedback-button.js" type="text/javascript" defer></script>
 
     <!-- Styling -->
@@ -31,6 +32,7 @@
 </head>
 <body>
     <navbar-component></navbar-component>
+    <navbar-rankings-component></navbar-rankings-component>
     <floating-feedback-button></floating-feedback-button>
     <div id="bodyContent">
       <div class="centeredColumn">
@@ -39,7 +41,7 @@
         <p class="paragraphDescription">These are the preliminary cell rankings shared in episode 3.</p>
         <p class="paragraphDescription">54 contestants (18 cells) will survive to the next round.</p>
         <p class="paragraphDescription">45 contestants (15 cells) will be eliminated.</p>
-        <div id="rankingsList"</div>
+        <div id="rankingsList"></div>
       </div>
     </div>
     <script type="module" src="js/rankings.js"></script>
