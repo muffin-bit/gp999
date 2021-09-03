@@ -108,11 +108,29 @@ function createPerformancesAndRankingsForPerson(person) {
     rankingsContentDiv.appendChild(top9Rank);
   }
 
-  var ep3Ranking = document.createElement("h3");
-  ep3Ranking.textContent = "First elimination prelim cell rank:    " + person.connectPerformance.cellPrelimRank;
-  ep3Ranking.style.marginBottom = k.spacingSmall;
-  ep3Ranking.style.fontFamily = "DXWooriGoStd";
-  rankingsContentDiv.appendChild(ep3Ranking);
+  var connectCellPrelimRank = document.createElement("h3");
+  connectCellPrelimRank.textContent = "First elimination prelim cell rank:    " + person.connectPerformance.cellPrelimRank.rank;
+  connectCellPrelimRank.style.marginBottom = k.spacingSmall;
+  connectCellPrelimRank.style.fontFamily = "DXWooriGoStd";
+  rankingsContentDiv.appendChild(connectCellPrelimRank);
+
+  var connectCellFinalRank = document.createElement("h3");
+  connectCellFinalRank.textContent = "First elimination final cell rank:    " + person.connectPerformance.cellFinalRank.rank;
+  connectCellFinalRank.style.marginBottom = k.spacingSmall;
+  connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
+  rankingsContentDiv.appendChild(connectCellFinalRank);
+
+  var connectCellFinalRank = document.createElement("h3");
+  connectCellFinalRank.textContent = "First elimination individual top 9 rank:    " + person.connectPerformance.individualFinalRank.rankOverall;
+  connectCellFinalRank.style.marginBottom = k.spacingSmall;
+  connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
+  rankingsContentDiv.appendChild(connectCellFinalRank);
+
+  var connectCellFinalRank = document.createElement("h3");
+  connectCellFinalRank.textContent = "First elimination individual rank within country:    " + person.connectPerformance.individualFinalRank.rankWithinGroup;
+  connectCellFinalRank.style.marginBottom = k.spacingSmall;
+  connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
+  rankingsContentDiv.appendChild(connectCellFinalRank);
 
   document.getElementById("performancesList").appendChild(rankingsDiv);
 

@@ -30,7 +30,7 @@ export class Person {
       name: row["Audition Song"],
       perfURL: row["Audition URL"],
       top9Candidate: row["Audition Top 9 Candidate"],
-      top9Rank: row["Ep 2 Top 9 Ranking"]
+      top9Rank: row["Audition Top 9 Ranking"]
     };
     this.connectPerformance = {
       id: row["Connect URL"],
@@ -40,13 +40,36 @@ export class Person {
       position: row["Connect Position"],
       perfURL: row["Connect URL"],
       fancamURL: row["Connect Fancam URL"],
-      cellMates: row["New Cell Mates"],
-      cellPrelimRank: row["New Cell Prelim Rank"]
+      cellMates: row["Connect Cell Mates"],
+      cellPrelimRank: {
+        rank: row["Connect Cell Prelim Rank"],
+        votesKorea: row["Connect Cell Prelim Votes (Korea)"],
+        votesInternational: row["Connect Cell Prelim Votes (International)"],
+        votesTotalPoints: row["Connect Cell Prelim Total Points"],
+
+      },
+      cellFinalRank: {
+        rank: row["Connect Cell Final Rank"],
+        votesKorea: row["Connect Cell Final Votes (Korea)"],
+        votesInternational: row["Connect Cell Final Votes (International)"],
+        votesTotalPoints: row["Connect Cell Final Total Points"],
+        eliminated: row["Connect Eliminated Y/N/Planet Pass"]
+      },
+      individualFinalRank: {
+        rankWithinGroup: row["Connect Individual Rank within K/J/C Group"],
+        rankOverall: row["Connect Individual Top 9 Rank"],
+        votesKorea: row["Connect Individual Votes Korea"],
+        votesInternational: row["Connect Individual Votes International"],
+        votesTotalPoints: row["Connect Individual Votes Total Points"],
+      },
     };
     this.newCell = {
       prelimRank: row["New Cell Prelim Rank"],
       finalRank: row["New Cell Final Rank"]
     };
+    if (this.nameEnglish == "Choi Yujin") {
+        debugger;
+    }
   }
 
   get smallRep() {
