@@ -1,0 +1,34 @@
+/*General*/
+@font-face {
+    font-family: AzonixCustom;
+    src: url("font/azonix/Azonix.otf") format("opentype");
+}
+
+@font-face {
+    font-family: DXWooriGoStd;
+    src: url("font/DXWooriGoStd-M.woff") format("woff");
+}
+
+.performanceCard {
+  padding: 20px;
+  width: 40%;
+}
+
+.youtubeVideo {
+  width: 460;
+  height: 280;
+}
+
+@media screen and (max-width: 800px) {
+
+  .performanceCard {
+    padding: 0px;
+    width: 100%;
+  }
+
+  .youtubeVideo {
+    width: 368;
+    height: 224;
+  }
+
+}

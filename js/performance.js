@@ -26,9 +26,9 @@ export class PerformanceRep {
 
     // LEFT
     var leftSide = document.createElement('div');
-    leftSide.className = 'centeredColumn';
-    leftSide.style.marginRight = k.spacingLarge;
-    leftSide.style.maxWidth = '560px';
+    leftSide.className = 'centeredColumn performanceCard';
+    // leftSide.style.marginRight = k.spacingLarge;
+    // leftSide.style.maxWidth = '560px';
 
     var title;
     if (this.title != "" && this.title !== undefined) {
@@ -86,14 +86,15 @@ export class PerformanceRep {
 
     // RIGHT
     var rightSide = document.createElement('div')
-    rightSide.className = 'centeredColumn'
-    rightSide.style.marginRight = k.spacingLarge;
-    rightSide.style.maxWidth = '50%'
+    rightSide.className = 'centeredColumn performanceCard'
+    // rightSide.style.marginRight = k.spacingLarge;
+    // rightSide.style.maxWidth = '50%'
 
     var perfVideoPlayer;
     if (this.perfURL != "" && this.perfURL !== undefined) {
       perfVideoPlayer = document.createElement('div')
       perfVideoPlayer.id = this.perfDomId
+      perfVideoPlayer.className += "youtubeVideo";
       perfVideoPlayer.style.backgroundColor = "#FE0f23";
       rightSide.appendChild(perfVideoPlayer);
     }
@@ -102,6 +103,7 @@ export class PerformanceRep {
     if (this.fancamURL != "" && this.fancamURL !== undefined) {
       fancamVideoPlayer = document.createElement('div')
       fancamVideoPlayer.id = this.fancamDomId
+      fancamVideoPlayer.className += "youtubeVideo";
       fancamVideoPlayer.style.backgroundColor = "#FE0f23";
       if (perfVideoPlayer !== undefined) {
         fancamVideoPlayer.style.marginTop = k.spacingMedium;

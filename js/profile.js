@@ -68,7 +68,8 @@ function createProfileHeaderForPerson(person) {
 
 function createPerformancesAndRankingsForPerson(person) {
   var performancesList = document.getElementById("performancesList");
-  performancesList.style.marginTop = k.spacingXLarge
+  performancesList.style.marginTop = k.spacingXLarge;
+  performancesList.style.width = '100%';
 
   var rankingsDiv = document.createElement("div")
   rankingsDiv.className = "centeredColumn";
@@ -193,8 +194,8 @@ function youtubeAPILoaded() {
 
       if (vidDomId) {
         var player = new YT.Player(vidDomId, {
-          height: '280',
-          width: '460',
+          height: '200',
+          width: '300',
           videoId: videoId,
           playerVars: {
             'playsinline': 1
