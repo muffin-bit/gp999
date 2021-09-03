@@ -7,9 +7,11 @@ import { RankingRep } from './ranking_rep.js';
 
 // Constants and variables
 const cellsRaw = new Set();
-const cellsProcessed = new Set();
+const ranksProcessed = new Set();
 const contestants = {};
 const cellsSurviving = 18;
+
+const ranksRaw = {}; // Mapping from rank to people at that rank
 
 // Ranking type
 const rt = {
@@ -21,6 +23,7 @@ const rt = {
     CONNECT_INDIVIDUAL_BY_GROUP: 'CONNECT_INDIVIDUAL_BY_GROUP',
 }
 
+// Utility functions
 function getRankingType() {
   if (window.location.pathname == "/connect_prelim_rankings.html") {
     return rt.CONNECT_CELL_PRELIM;
@@ -34,42 +37,10 @@ function getRankingType() {
   }
 }
 
-// Parse line of csv into an object
-function parseLine(row) {
-    var person = new Person(row);
-    contestants[person.id] = person;
-
-    // Add their cell to the cell set
-    cellsRaw.add(person.connectPerformance.cellMates);
-    return person;
-}
-
-function processCells() {
-  if (cellsRaw.size == 0) {
-    debugger;
-  }
-
-  for (let c of cellsRaw) {
-    let cellBuilder = {};
-    cellBuilder.members = [];
-    cellBuilder.rank = -1;
-
-    var cellMembersArr = c.split(', '); // get ids of cell members
-    for (let memberId of cellMembersArr) {  // lookup the person by id
-      let person = contestants[memberId];
-      cellBuilder.members.push(person);
-      cellBuilder.rank = getRank(person);
-    }
-    let rankingRep = new RankingRep(cellBuilder);
-    cellsProcessed.add(rankingRep);
-  }
-
-}
-
 function getRank(person) {
-  if (window.location.pathname == "/connect_prelim_rankings.html") {
+  if (getRankingType() == rt.CONNECT_CELL_PRELIM) {
     return person.connectPerformance.cellPrelimRank.rank;
-  } else if (window.location.pathname == "/connect_final_rankings.html") {
+  } else if (getRankingType() == rt.CONNECT_CELL_FINAL) {
     return person.connectPerformance.cellFinalRank.rank;
   } else {
     debugger;
@@ -77,22 +48,75 @@ function getRank(person) {
   }
 }
 
+function parseLine(row) {
+    var person = new Person(row);
+    contestants[person.id] = person;
+
+    // Add their cell to the cell set
+    cellsRaw.add(person.connectPerformance.cellMates);
+
+    // Add the cell to the ranks dictionary
+    let rank = getRank(person);
+    if (! (rank in ranksRaw)) { // if the key doesn't exist
+      ranksRaw[rank] = [person];
+    } else {
+      ranksRaw[rank].push(person);
+    }
+    return;
+}
+
+function processAndShowRankings() {
+  if (ranksRaw.size == 0) {
+    console.error("WARNING: No rankings to show!");
+    debugger;
+  }
+
+  for (const [rank, people] of Object.entries(ranksRaw)) {
+    // sort the people into C, K, J order
+    var sortedPeople = Array.from(people).sort(function(a, b) {
+      const lookup = {
+        "C": 0,
+        "K": 1,
+        "J": 2
+      }
+      const aVal = lookup[a.group];
+      const bVal = lookup[b.group];
+      if (aVal < bVal) {
+        return -1;
+      }
+      if (aVal > bVal) {
+        return 1;
+      }
+      return 0;
+    });
+
+    var rankBuilder = {
+      members: sortedPeople,
+      rank: rank
+    }
+    const rankingRep = new RankingRep(rankBuilder);
+    ranksProcessed.add(rankingRep);
+  }
+
+  showRankings();
+}
+
 // Generate visual elements
 function showRankings() {
   var rankingsList = document.getElementById("rankingsList");
   rankingsList.className = "centeredColumn";
 
-  var sortedCells = Array.from(cellsProcessed).sort(function(a, b) {
-    if (a.rank < b.rank) {
-      return -1;
-    }
-    if (a.rank > b.rank) {
-      return 1;
-    }
-    return 0;
-  });
+  // var sortedCells = Array.from(ranksProcessed).sort(function(a, b) {
+  //   if (a.rank < b.rank) {
+  //     return -1;
+  //   }
+  //   if (a.rank > b.rank) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
 
-  for (let cell of sortedCells) {
+  for (let cell of ranksProcessed) {
     if (cell.rank == cellsSurviving) {
       var eliminationDivider = document.createElement('hr');
       eliminationDivider.className = "eliminationDivider";
@@ -113,8 +137,7 @@ function showRankings() {
 
 function main() {
   d3.csv("https://muffin-bit.github.io/gp999/data.csv", parseLine, function (err, data) {
-      processCells();
-      showRankings();
+      processAndShowRankings();
   });
 }
 
