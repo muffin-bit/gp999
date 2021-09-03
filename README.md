@@ -4,6 +4,13 @@ Girls Planet 999
 https://muffin-bit.github.io/gp999/contestants.html
 
 ## Setup
+### Running the Server
+From the root of the project:
+```
+python3 -m http.server
+```
+Then visit http://localhost:8000/
+
 ### Updating the Data
 To pull the latest information from the spreadsheet, follow these steps:
 
