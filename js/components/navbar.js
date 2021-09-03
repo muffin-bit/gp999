@@ -10,7 +10,7 @@ class Header extends HTMLElement {
         <div class="topnav">
           <div class="leftnav">
             <a href="contestants.html">Contestants</a>
-            <a href="rankings.html">Rankings</a>
+            <a href="connect_prelim_rankings.html">Rankings</a>
             <a href="voting.html">Voting</a>
           </div>
           <div class="rightnav">
