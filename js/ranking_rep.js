@@ -8,22 +8,20 @@ export class RankingRep {
   constructor(builder) {
     this.members = builder.members;
     this.rank = parseInt(builder.rank);
-    this.showBackground = parseInt(builder.showBackground);
+    this.showBackground = builder.showBackground;
   }
 
   get rep() {
     var div = document.createElement('div');
     div.className = 'cell centeredRow'
-    div.style.margin = k.spacingSmall;
-    div.style.marginRight = k.spacingLarge;
 
     // Rank
     var rankText = document.createElement('h3');
-    rankText.textContent = this.rank;
-    rankText.style.textAlign = 'center';
-    rankText.style.fontSize = '30';
-    rankText.style.width = 60;
+    rankText.id = "rankText";
     div.appendChild(rankText);
+    if (!isNaN(this.rank)) { // hold the space for it either way
+      rankText.textContent = this.rank;
+    }
 
     // People
     var peopleDiv = document.createElement('div');
@@ -35,6 +33,7 @@ export class RankingRep {
       var personRep = person.smallRep;
       peopleDiv.appendChild(personRep);
     }
+
     return div;
   }
 }

@@ -72,8 +72,9 @@ export class Person {
   get smallRep() {
     var div = document.createElement('div');
     div.className = 'smallPersonRep'
-    div.style.width = '140px';
-    div.style.height = '140px';
+    const theID = this.id;
+    div.onclick = function(){ window.location = 'profile.html?id=' + theID;};
+    div.style.cursor = 'pointer';
 
     var imageCropDiv = document.createElement('div');
     imageCropDiv.className = 'image-cropper-circle'
@@ -82,18 +83,15 @@ export class Person {
     imageCropDiv.style.backgroundRepeat = 'contain';
     imageCropDiv.style.backgroundPosition = '50% 25%';
     imageCropDiv.style.backgroundSize = '160%';
-
-    var a = document.createElement('a');
-    a.href = 'profile.html?id=' + this.id
-    a.style.marginBottom = '8px';
-    a.appendChild(imageCropDiv)
-    div.appendChild(a);
+    imageCropDiv.style.marginBottom = '8px';
+    div.appendChild(imageCropDiv)
 
     var nameEnglish = document.createElement('h3');
     nameEnglish.textContent = this.nameEnglish;
     nameEnglish.style.textAlign = 'center';
     nameEnglish.style.marginBottom = k.spacingTiny;
-    div.appendChild(nameEnglish);
+    nameEnglish.style.height = '40px';
+    div.appendChild(nameEnglish)
 
     return div;
   }

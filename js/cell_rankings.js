@@ -12,6 +12,7 @@ const contestants = {};
 const cellsSurviving = 18;
 
 const ranksRaw = {}; // Mapping from rank to people at that rank
+const planetPass = []; // Folks who got the planet pass, where applicable
 
 // Ranking type
 const rt = {
@@ -24,6 +25,25 @@ const rt = {
 }
 
 // Utility functions
+function sortByCKJ() {
+  return function(a, b) {
+    const lookup = {
+      "C": 0,
+      "K": 1,
+      "J": 2
+    }
+    const aVal = lookup[a.group];
+    const bVal = lookup[b.group];
+    if (aVal < bVal) {
+      return -1;
+    }
+    if (aVal > bVal) {
+      return 1;
+    }
+    return 0;
+  }
+}
+
 function getRankingType() {
   if (window.location.pathname == "/connect_prelim_rankings.html") {
     return rt.CONNECT_CELL_PRELIM;
@@ -32,7 +52,6 @@ function getRankingType() {
   } else if (window.location.pathname == "/connect_rankings.html") {
     return rt.CONNECT_INDIVIDUAL_BY_GROUP;
   } else {
-    debugger;
     return 0;
   }
 }
@@ -50,6 +69,10 @@ function getRank(person) {
   }
 }
 
+function getPlanetPass(person) {
+  return person.connectPerformance.cellFinalRank.eliminated == "Planet Pass";
+}
+
 function parseLine(row) {
     var person = new Person(row);
     contestants[person.id] = person;
@@ -64,6 +87,11 @@ function parseLine(row) {
     } else {
       ranksRaw[rank].push(person);
     }
+
+    // Add them to planet pass if necessary
+    if (getPlanetPass(person)) {
+      planetPass.push(person);
+    }
     return;
 }
 
@@ -75,27 +103,12 @@ function processAndShowRankings() {
 
   for (const [rank, people] of Object.entries(ranksRaw)) {
     // sort the people into C, K, J order
-    var sortedPeople = Array.from(people).sort(function(a, b) {
-      const lookup = {
-        "C": 0,
-        "K": 1,
-        "J": 2
-      }
-      const aVal = lookup[a.group];
-      const bVal = lookup[b.group];
-      if (aVal < bVal) {
-        return -1;
-      }
-      if (aVal > bVal) {
-        return 1;
-      }
-      return 0;
-    });
+    var sortedPeople = Array.from(people).sort(sortByCKJ());
 
     var rankBuilder = {
       members: sortedPeople,
       rank: rank,
-      showBackground:  getRankingType() in [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL]
+      showBackground:  [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL].includes(getRankingType())
     }
     const rankingRep = new RankingRep(rankBuilder);
     ranksProcessed.add(rankingRep);
@@ -132,6 +145,29 @@ function getCountryHeader() {
   return countryHeader;
 }
 
+function getPlanetPassHeader() {
+  // Explain the Planet Pass situation
+  var planetPassHeader = document.createElement('h3');
+  planetPassHeader.textContent = "Saved from elimination by being given a 'Planet Pass' from the mentors:";
+  planetPassHeader.style.textAlign = 'center';
+  planetPassHeader.style.fontSize = '20';
+  planetPassHeader.style.marginTop = k.spacingMedium;
+  planetPassHeader.style.marginBottom = k.spacingMedium;
+  return planetPassHeader;
+}
+
+function getPlanetPassCell() {
+  // Make a fake "cell"
+  var sortedPeople = Array.from(planetPass).sort(sortByCKJ());
+  var rankBuilder = {
+    members: sortedPeople,
+    // No rank
+    showBackground: false
+  }
+  const rankingRep = new RankingRep(rankBuilder);
+  return rankingRep.rep;
+}
+
 // Generate visual elements
 function showRankings() {
   var rankingsList = document.getElementById("rankingsList");
@@ -140,24 +176,38 @@ function showRankings() {
   if (getRankingType() == rt.CONNECT_INDIVIDUAL_BY_GROUP) {
     // Show the "C K J" header
     rankingsList.appendChild(getCountryHeader());
-
   }
 
+  const hasAnElimination = [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL].includes(getRankingType())
   for (let cell of ranksProcessed) {
-    if (cell.rank == cellsSurviving) {
+    if (hasAnElimination && cell.rank == cellsSurviving) {
+      // Show planet pass if necessary
+      if (getRankingType() == rt.CONNECT_CELL_FINAL && planetPass.length > 0) {
+        rankingsList.appendChild(getPlanetPassHeader());
+        rankingsList.appendChild(getPlanetPassCell());
+      }
+
+      // Create a divider line
       var eliminationDivider = document.createElement('hr');
       eliminationDivider.className = "eliminationDivider";
       eliminationDivider.style.marginTop = k.spacingMedium;
       eliminationDivider.style.marginBottom = k.spacingMedium;
       rankingsList.appendChild(eliminationDivider);
 
+      // Explain the elimination situation
       var eliminationHeader = document.createElement('h3');
-      eliminationHeader.textContent = "The following cells will be eliminated if their rank does not increase:";
+      if (getRankingType() == rt.CONNECT_CELL_FINAL) {
+        eliminationHeader.textContent = "Eliminated:";
+      } else if (getRankingType() == rt.CONNECT_CELL_PRELIM) {
+        eliminationHeader.textContent = "In danger of elimination:";
+      }
       eliminationHeader.style.textAlign = 'center';
       eliminationHeader.style.fontSize = '20';
       eliminationHeader.style.marginBottom = k.spacingMedium;
       rankingsList.appendChild(eliminationHeader);
     }
+
+    // Add the next cell
     rankingsList.appendChild(cell.rep);
   }
 }
