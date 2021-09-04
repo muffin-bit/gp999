@@ -9,9 +9,15 @@ const validVotingPeriods = [];
 
 function configureValidVotingPeriods() {
   // First elimination
-  var firstVotingStart = new Date(Date.UTC(2021, 7, 1, 1)); // Thursday, August 1, 1:00am UTC+0  // Unknown, just picked a date
-  var firstVotingEnd = new Date(Date.UTC(2021, 7, 28, 1)); // Thursday, August 28, 1:00am UTC+0
-  validVotingPeriods.push({start: firstVotingStart, end: firstVotingEnd});
+  validVotingPeriods.push({
+    start: new Date(Date.UTC(2021, 7, 1, 1)), // Thursday, August 1, 1:00am UTC+0  // Unknown, just picked a date
+    end: new Date(Date.UTC(2021, 7, 28, 1)) // Thursday, August 28, 1:00am UTC+0
+  });
+  // Second elimination
+  validVotingPeriods.push({
+    start: new Date(Date.UTC(2021, 7, 1, 1)), // Thursday, August 1, 1:00am UTC+0  // Unknown, just picked a date
+    end: new Date(Date.UTC(2021, 9, 18, 1)) // Thursday, September 18, 1:00am UTC+0
+  });
 }
 
 // Generate visual elements
