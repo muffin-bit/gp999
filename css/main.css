@@ -89,18 +89,19 @@ h1 {
   margin-right: 30px;
   color: #AAA;
   background-color: transparent;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .topnav a:visited {
   color: #AAA;
   background-color: transparent;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 .topnav a:hover {
   color: white;
   background-color: transparent;
-  text-decoration: underline; }
-
+}
 
 .smallProfile {
   width: 16vw;
