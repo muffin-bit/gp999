@@ -24,26 +24,6 @@ const rt = {
     CONNECT_INDIVIDUAL_BY_GROUP: 'CONNECT_INDIVIDUAL_BY_GROUP',
 }
 
-// Utility functions
-function sortByCKJ() {
-  return function(a, b) {
-    const lookup = {
-      "C": 0,
-      "K": 1,
-      "J": 2
-    }
-    const aVal = lookup[a.group];
-    const bVal = lookup[b.group];
-    if (aVal < bVal) {
-      return -1;
-    }
-    if (aVal > bVal) {
-      return 1;
-    }
-    return 0;
-  }
-}
-
 function getRankingType() {
   var n = window.location.pathname.lastIndexOf('/');
   var page = window.location.pathname.substring(n + 1);
@@ -123,7 +103,7 @@ function getPlanetPassHeader() {
 
 function getPlanetPassCell() {
   // Make a fake "cell"
-  var sortedPeople = Array.from(planetPass).sort(sortByCKJ());
+  var sortedPeople = Array.from(planetPass).sort(k.sortByCKJ());
   var rankBuilder = {
     members: sortedPeople,
     // No rank

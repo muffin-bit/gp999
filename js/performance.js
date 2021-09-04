@@ -1,6 +1,7 @@
 "use strict";
 
 import * as k from './constants.js'
+import { RankingRep } from './ranking_rep.js';
 
 export class PerformanceRep {
 
@@ -8,6 +9,7 @@ export class PerformanceRep {
     this.title = builder.title;
     this.subtitle = builder.subtitle;
     this.teammates = builder.teammates;
+    this.cells = builder.cells;
     this.teamName = builder.teamName;
     this.perfURL = builder.perfURL;
     this.fancamURL = builder.fancamURL;
@@ -63,7 +65,7 @@ export class PerformanceRep {
     }
 
     var team;
-    if (this.teammates.length > 0) {
+    if (this.teammates !== undefined && this.teammates.length > 0) {
       team = document.createElement('div');
       team.className = 'centeredRow';
       team.style.alignItems = 'flex-start';
@@ -78,6 +80,24 @@ export class PerformanceRep {
         leftSide.style.maxWidth = '500px';
       } else if (l <= 4 || l >= 7) {
         leftSide.style.maxWidth = '560px';
+      }
+      leftSide.appendChild(team);
+    } else if (this.cells !== undefined && Object.keys(this.cells).length > 0) {
+      team = document.createElement('div');
+      team.className = 'centeredColumn';
+      team.style.display = 'flex'
+      team.style.alignItems = 'flex-start';
+      team.style.marginBottom = k.spacingMedium
+      for (const [ids, people] of Object.entries(this.cells)) {
+        var connectCellBuilder = {
+          members: Array.from(people).sort(k.sortByCKJ()),
+          rank: -1,
+          showBackground: true
+        }
+        const connectCellRepModel = new RankingRep(connectCellBuilder);
+        var connectCellRep = connectCellRepModel.rep;
+        connectCellRep.style.marginBottom = k.spacingSmall;
+        team.appendChild(connectCellRep);
       }
       leftSide.appendChild(team)
     }

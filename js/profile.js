@@ -230,16 +230,32 @@ function createPerformanceRep(person, performance) {
       debugger;
   }
 
-  // Get teammates
-  var teammates = []
-  if (performance != videos.OOO && performance != videos.PR) { // Awkward to show teammates for signal song solos
+  // Get teammates / cells
+  if (performance == videos.CONNECT) { // Use cells for connect mission
+    var cells = {};
     for (let c in contestants) {
       if (contestants[c][perfProperty].id == person[perfProperty].id) {
-        teammates.push(contestants[c]);
+        const contestantCellMates = contestants[c][perfProperty].cellMates;
+        if (contestantCellMates in cells) {
+          cells[contestantCellMates].push(contestants[c]); // Add on to an existing cell
+        } else {
+          cells[contestantCellMates] = [contestants[c]] // Start a new cell
+        }
       }
     }
+    perfBuilder.cells = cells;
+  } else {
+    var teammates = [];
+    if (performance != videos.OOO && performance != videos.PR) { // Awkward to show teammates for signal song solos
+      for (let c in contestants) {
+        if (contestants[c][perfProperty].id == person[perfProperty].id) {
+          teammates.push(contestants[c]);
+        }
+      }
+    }
+    perfBuilder.teammates = teammates;
   }
-  perfBuilder.teammates = teammates;
+
   let perfRep = new PerformanceRep(perfBuilder);
   performances.push(perfRep);
 
