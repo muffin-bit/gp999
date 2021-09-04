@@ -173,6 +173,13 @@ function refreshContestantGrid() {
   removeAllChildNodes(document.getElementById("contestantsGrid")) // clear the grid
   const shouldShowEliminated = document.getElementById("contestantSwitchEliminated").checked;
   showProfiles(contestantData, shouldShowEliminated);
+  if (document.getElementById("KFilterButton").classList.contains("activeFilterButton")) {
+    filterProfilesToK();
+  } else if (document.getElementById("JFilterButton").classList.contains("activeFilterButton")) {
+    filterProfilesToJ();
+  } else if (document.getElementById("CFilterButton").classList.contains("activeFilterButton")) {
+    filterProfilesToC();
+  }
 }
 
 function main() {
