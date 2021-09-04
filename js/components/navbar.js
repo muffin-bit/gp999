@@ -10,7 +10,7 @@ class Header extends HTMLElement {
           <p>Fansite by Muffin and Pie</p>
         </div>
         <div id="logo">
-          <a href="/">
+          <a href="contestants.html">
             <img src="img/Girls_Planet_999_Logo_EN.png">
           </a>
         </div>
