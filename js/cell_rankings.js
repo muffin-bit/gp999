@@ -230,7 +230,7 @@ function processAndShowRankings() {
 
   for (const [rank, people] of Object.entries(ranksRaw)) {
     // sort the people into C, K, J order
-    var sortedPeople = Array.from(people).sort(sortByCKJ());
+    var sortedPeople = Array.from(people).sort(k.sortByCKJ());
 
     var rankBuilder = {
       members: sortedPeople,
