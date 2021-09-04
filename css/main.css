@@ -46,12 +46,12 @@ h1 {
 }
 
 #banner img {
-    max-height: 120px;
-    padding-bottom: 5px;
+  max-height: 120px;
+  padding-bottom: 5px;
 }
 
 #banner2 {
-  background: #EED9FF;
+  background: #604bab;
   font-size: 6px;
 }
 
@@ -72,13 +72,15 @@ h1 {
   text-align: center; }
 
 #banner .topnav .current {
-  color: red;
+  color: white;
   background-color: transparent;
+  /* text-decoration: underline; */
 }
 
 #banner2 .topnav .current {
-  color: red;
+  color: white;
   background-color: transparent;
+  /* text-decoration: underline; */
 }
 
 .topnav a:link {

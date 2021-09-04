@@ -8,13 +8,13 @@
   width: 600px;
   text-align: center;
   margin: auto;
-  background-color: #3f0d54;
+  background-color: #311377;  /*#3f0d54;*/
   border-radius: 20px;
   margin-bottom: 24px;
 }
 
 .contestantFilterButton {
-  background-color: #3f0d54;
+  background-color: #311377; /*#3f0d54;*/
   border: none;
   color: grey;
   padding: 15px 20px;
