@@ -265,7 +265,7 @@ function processAndShowRankings() {
 function showRankings() {
   // Show top 9 if needed
   var rankingsTop9 = document.getElementById("rankingsListTop9");
-  if (!!rankingsTop9 || Object.keys(top9).length != 9) {
+  if (!!rankingsTop9 && Object.keys(top9).length != 9) {
     rankingsTop9.appendChild(getTop9Div());
 
     document.getElementById("rankingsListHeader").style.marginTop = '40px';

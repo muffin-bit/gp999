@@ -8,8 +8,8 @@ class Header2 extends HTMLElement {
       <div id="banner2">
         <div class="topnav" id="rankings-nav">
           <a href="connect_rankings.html">Connect Overall</a>
-          <a href="connect_prelim_rankings.html">Connect Prelim</a>
-          <a href="connect_final_rankings.html">Connect Final</a>
+          <a href="connect_prelim_rankings.html">Cell Prelim</a>
+          <a href="connect_final_rankings.html">Cell Final</a>
         </div>
       </div>
     `;
