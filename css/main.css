@@ -114,6 +114,12 @@ h1 {
   background-size: 100%;;
   background-position: 50% 25%;
   border-radius: 1.8vw;
+  box-shadow: 0;
+  transition: box-shadow 0.2s;
+}
+
+.smallProfileImage:hover {
+  box-shadow: 0 4px 8px rgba(81, 81, 81, 0.8);
 }
 
 .smallProfileNameDiv {
@@ -156,6 +162,13 @@ h1 {
     border-width: 2px;
     position: relative;
     text-align: center;
+    /* shadow transition */
+    box-shadow: 0;
+    transition: box-shadow 0.2s;
+}
+
+.image-cropper-circle:hover {
+  box-shadow: 0 3px 6px #515151;
 }
 
 .RankingRepPeopleBackground {
