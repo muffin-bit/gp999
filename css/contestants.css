@@ -40,14 +40,6 @@
   text-align: : center;
 }
 
-.desktopOnly {
-  display: block;
-}
-
-.mobileOnly {
-  display: none;
-}
-
 .activeFilterButton {
   color: white;
 }
@@ -120,12 +112,6 @@ input:checked + .slider:before {
 
 /* Use a media query to add a breakpoint at 800px: */
 @media screen and (max-width: 800px) {
-  .mobileOnly {
-    display: block;
-  }
-  .desktopOnly {
-    display: none;
-  }
   .contestantNameTitle {
     font-size: 2.6vw;
     height:  5.8vw;

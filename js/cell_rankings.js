@@ -13,6 +13,7 @@ const cellsSurviving = 18;
 
 const ranksRaw = {}; // Mapping from rank to people at that rank
 const planetPass = []; // Folks who got the planet pass, where applicable
+const top9 = {}; // Folks who got the planet pass, where applicable
 
 // Ranking type
 const rt = {
@@ -20,7 +21,6 @@ const rt = {
     AUDITION_TOP_NINE: 'AUDITION_TOP_NINE',
     CONNECT_CELL_PRELIM: 'CONNECT_CELL_PRELIM',
     CONNECT_CELL_FINAL: 'CONNECT_CELL_FINAL',
-    CONNECT_TOP_NINE: 'CONNECT_TOP_NINE',
     CONNECT_INDIVIDUAL_BY_GROUP: 'CONNECT_INDIVIDUAL_BY_GROUP',
 }
 
@@ -73,73 +73,35 @@ function getPlanetPass(person) {
   return person.connectPerformance.cellFinalRank.eliminated == "Planet Pass";
 }
 
-function parseLine(row) {
-    var person = new Person(row);
-    contestants[person.id] = person;
-
-    // Add their cell to the cell set
-    cellsRaw.add(person.connectPerformance.cellMates);
-
-    // Add the cell to the ranks dictionary
-    let rank = getRank(person);
-    if (! (rank in ranksRaw)) { // if the key doesn't exist
-      ranksRaw[rank] = [person];
-    } else {
-      ranksRaw[rank].push(person);
+function getTop9Rank(person) {
+  if (getRankingType() == rt.CONNECT_INDIVIDUAL_BY_GROUP) {
+    const top9Rank = person.connectPerformance.individualFinalRank.rankOverall;
+    if (top9Rank != "" && top9Rank !== undefined) {
+      return parseInt(top9Rank);
     }
-
-    // Add them to planet pass if necessary
-    if (getPlanetPass(person)) {
-      planetPass.push(person);
-    }
-    return;
-}
-
-function processAndShowRankings() {
-  if (ranksRaw.size == 0) {
-    console.error("WARNING: No rankings to show!");
-    debugger;
   }
-
-  for (const [rank, people] of Object.entries(ranksRaw)) {
-    // sort the people into C, K, J order
-    var sortedPeople = Array.from(people).sort(sortByCKJ());
-
-    var rankBuilder = {
-      members: sortedPeople,
-      rank: rank,
-      showBackground:  [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL].includes(getRankingType())
-    }
-    const rankingRep = new RankingRep(rankBuilder);
-    ranksProcessed.add(rankingRep);
-  }
-
-  showRankings();
+  return -1;
 }
 
 function getCountryHeader() {
   var countryHeader = document.createElement("div");
   countryHeader.className = "centeredRow";
-  countryHeader.style.width = "310px";
+  countryHeader.id = "rankingsCountryHeader";
   countryHeader.style.justifyContent = "space-between";
-  countryHeader.style.marginLeft = "24px";
 
   var countryHeaderC = document.createElement("h3");
   countryHeaderC.textContent = "C"
   countryHeaderC.style.textAlign = 'center';
-  countryHeaderC.style.fontSize = '40';
   countryHeader.appendChild(countryHeaderC);
 
   var countryHeaderK = document.createElement("h3");
   countryHeaderK.textContent = "K"
   countryHeaderK.style.textAlign = 'center';
-  countryHeaderK.style.fontSize = '40';
   countryHeader.appendChild(countryHeaderK);
 
   var countryHeaderJ = document.createElement("h3");
   countryHeaderJ.textContent = "J"
   countryHeaderJ.style.textAlign = 'center';
-  countryHeaderJ.style.fontSize = '40';
   countryHeader.appendChild(countryHeaderJ);
 
   return countryHeader;
@@ -168,43 +130,165 @@ function getPlanetPassCell() {
   return rankingRep.rep;
 }
 
+function getEliminationDivider() {
+  var eliminationDivider = document.createElement('hr');
+  eliminationDivider.className = "eliminationDivider";
+  eliminationDivider.style.marginTop = k.spacingMedium;
+  eliminationDivider.style.marginBottom = k.spacingMedium;
+  return eliminationDivider;
+}
+
+function getEliminationHeader() {
+  var eliminationHeader = document.createElement('h3');
+  if (getRankingType() == rt.CONNECT_CELL_FINAL) {
+    eliminationHeader.textContent = "Eliminated:";
+  } else if (getRankingType() == rt.CONNECT_CELL_PRELIM) {
+    eliminationHeader.textContent = "In danger of elimination:";
+  }
+  eliminationHeader.style.textAlign = 'center';
+  eliminationHeader.style.fontSize = '20';
+  eliminationHeader.style.marginBottom = k.spacingMedium;
+  return eliminationHeader;
+}
+
+function getTop9Div() {
+  if (getRankingType() != rt.CONNECT_INDIVIDUAL_BY_GROUP) {
+    console.error("Warning: Showing a top 9 for something other than the connect mission final!");
+    debugger;
+  }
+
+  var top9Div = document.createElement('div');
+  top9Div.className = "centeredColumn";
+
+  var top9FirstRow = document.createElement('div');
+  top9FirstRow.className = "centeredRow fullWidth";
+  top9FirstRow.appendChild(top9[1].getSmallRep(1));
+  top9Div.appendChild(top9FirstRow);
+
+  // DESKTOP
+  var top9SecondRow = document.createElement('div');
+  top9SecondRow.className = "centeredRow fullWidth desktopOnly";
+  top9SecondRow.appendChild(top9[2].getSmallRep(2));
+  top9SecondRow.appendChild(top9[3].getSmallRep(3));
+  top9SecondRow.appendChild(top9[4].getSmallRep(4));
+  top9Div.appendChild(top9SecondRow);
+
+  var top9ThirdRow = document.createElement('div');
+  top9ThirdRow.className = "centeredRow fullWidth desktopOnly";
+  top9ThirdRow.appendChild(top9[5].getSmallRep(5));
+  top9ThirdRow.appendChild(top9[6].getSmallRep(6));
+  top9ThirdRow.appendChild(top9[7].getSmallRep(7));
+  top9ThirdRow.appendChild(top9[8].getSmallRep(8));
+  top9ThirdRow.appendChild(top9[9].getSmallRep(9));
+  top9Div.appendChild(top9ThirdRow);
+
+  // MOBILE
+  var top9SecondRowMobile = document.createElement('div');
+  top9SecondRowMobile.className = "centeredRow mobileOnly fullWidth";
+  top9SecondRowMobile.appendChild(top9[2].getSmallRep(2));
+  top9SecondRowMobile.appendChild(top9[3].getSmallRep(3));
+  top9Div.appendChild(top9SecondRowMobile);
+
+  var top9ThirdRowMobile = document.createElement('div');
+  top9ThirdRowMobile.className = "centeredRow mobileOnly fullWidth";
+  top9ThirdRowMobile.appendChild(top9[4].getSmallRep(4));
+  top9ThirdRowMobile.appendChild(top9[5].getSmallRep(5));
+  top9ThirdRowMobile.appendChild(top9[6].getSmallRep(6));
+  top9Div.appendChild(top9ThirdRowMobile);
+
+  var top9FourthRowMobile = document.createElement('div');
+  top9FourthRowMobile.className = "centeredRow mobileOnly fullWidth";
+  const rep1 = top9[7].getSmallRep(7);
+  rep1.style.marginRight = '30px';
+  top9FourthRowMobile.appendChild(rep1);
+  top9FourthRowMobile.appendChild(top9[8].getSmallRep(8));
+  const rep2 = top9[9].getSmallRep(9);
+  rep2.style.marginLeft = '30px';
+  top9FourthRowMobile.appendChild(rep2);
+  top9Div.appendChild(top9FourthRowMobile);
+
+  return top9Div;
+}
+
+// Business Logic
+function parseLine(row) {
+    var person = new Person(row);
+    contestants[person.id] = person;
+
+    // Add their cell to the cell set
+    cellsRaw.add(person.connectPerformance.cellMates);
+
+    // Add the cell to the ranks dictionary
+    let rank = getRank(person);
+    if (! (rank in ranksRaw)) { // if the key doesn't exist
+      ranksRaw[rank] = [person];
+    } else {
+      ranksRaw[rank].push(person);
+    }
+
+    // Add them to planet pass if necessary
+    if (getPlanetPass(person)) {
+      planetPass.push(person);
+    }
+
+    // Add them to the top9 if necessary
+    const top9Rank = getTop9Rank(person);
+    if (top9Rank != -1) {
+      top9[top9Rank] = person;
+    }
+    return;
+}
+
+function processAndShowRankings() {
+  if (ranksRaw.size == 0) {
+    console.error("WARNING: No rankings to show!");
+    debugger;
+  }
+
+  for (const [rank, people] of Object.entries(ranksRaw)) {
+    // sort the people into C, K, J order
+    var sortedPeople = Array.from(people).sort(sortByCKJ());
+
+    var rankBuilder = {
+      members: sortedPeople,
+      rank: rank,
+      showBackground:  [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL].includes(getRankingType())
+    }
+    const rankingRep = new RankingRep(rankBuilder);
+    ranksProcessed.add(rankingRep);
+  }
+
+  showRankings();
+}
+
 // Generate visual elements
 function showRankings() {
+  // Show top 9 if needed
+  var rankingsTop9 = document.getElementById("rankingsListTop9");
+  if (!!rankingsTop9 || Object.keys(top9).length != 9) {
+    rankingsTop9.appendChild(getTop9Div());
+
+    document.getElementById("rankingsListHeader").style.marginTop = '40px';
+  }
+
+  // Proceed to longform rankings
   var rankingsList = document.getElementById("rankingsList");
   rankingsList.className = "centeredColumn";
 
   if (getRankingType() == rt.CONNECT_INDIVIDUAL_BY_GROUP) {
-    // Show the "C K J" header
-    rankingsList.appendChild(getCountryHeader());
+    rankingsList.appendChild(getCountryHeader()); // Show the "C K J" header
   }
 
-  const hasAnElimination = [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL].includes(getRankingType())
   for (let cell of ranksProcessed) {
+    // Show elimination and planet pass info when needed
+    const hasAnElimination = [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL].includes(getRankingType())
     if (hasAnElimination && cell.rank == cellsSurviving) {
-      // Show planet pass if necessary
       if (getRankingType() == rt.CONNECT_CELL_FINAL && planetPass.length > 0) {
         rankingsList.appendChild(getPlanetPassHeader());
         rankingsList.appendChild(getPlanetPassCell());
       }
-
-      // Create a divider line
-      var eliminationDivider = document.createElement('hr');
-      eliminationDivider.className = "eliminationDivider";
-      eliminationDivider.style.marginTop = k.spacingMedium;
-      eliminationDivider.style.marginBottom = k.spacingMedium;
-      rankingsList.appendChild(eliminationDivider);
-
-      // Explain the elimination situation
-      var eliminationHeader = document.createElement('h3');
-      if (getRankingType() == rt.CONNECT_CELL_FINAL) {
-        eliminationHeader.textContent = "Eliminated:";
-      } else if (getRankingType() == rt.CONNECT_CELL_PRELIM) {
-        eliminationHeader.textContent = "In danger of elimination:";
-      }
-      eliminationHeader.style.textAlign = 'center';
-      eliminationHeader.style.fontSize = '20';
-      eliminationHeader.style.marginBottom = k.spacingMedium;
-      rankingsList.appendChild(eliminationHeader);
+      rankingsList.appendChild(getEliminationDivider());
+      rankingsList.appendChild(getEliminationHeader());
     }
 
     // Add the next cell

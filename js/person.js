@@ -70,7 +70,7 @@ export class Person {
     };
   }
 
-  get smallRep() {
+  getSmallRep(withRanking = -1) {
     var div = document.createElement('div');
     div.className = 'smallPersonRep'
     const theID = this.id;
@@ -78,14 +78,23 @@ export class Person {
     div.style.cursor = 'pointer';
 
     var imageCropDiv = document.createElement('div');
-    imageCropDiv.className = 'image-cropper-circle'
-    imageCropDiv.style.backgroundImage = 'url(img/ProfilePics/' + this.id + '_ProfilePic1.jpg)'
+    imageCropDiv.className = 'image-cropper-circle';
+    imageCropDiv.style.backgroundImage = 'url(img/ProfilePics/' + this.id + '_ProfilePic1.jpg)';
     imageCropDiv.style.backgroundSize = 'cover';
     imageCropDiv.style.backgroundRepeat = 'contain';
     imageCropDiv.style.backgroundPosition = '50% 25%';
     imageCropDiv.style.backgroundSize = '160%';
     imageCropDiv.style.marginBottom = '8px';
     div.appendChild(imageCropDiv)
+
+    if (withRanking != -1) {
+      var rankingDiv = document.createElement('div');
+      rankingDiv.className = 'rankingNumber centeredRow';
+      var rankingDivText = document.createElement('h3');
+      rankingDivText.textContent = withRanking;
+      rankingDiv.appendChild(rankingDivText);
+      imageCropDiv.appendChild(rankingDiv);
+    }
 
     var nameEnglish = document.createElement('h3');
     nameEnglish.textContent = this.nameEnglish;

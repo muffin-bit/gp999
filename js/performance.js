@@ -70,7 +70,7 @@ export class PerformanceRep {
       team.style.display = 'flex'
       team.style.marginBottom = k.spacingMedium
       for (let person of this.teammates) {
-        team.appendChild(person.smallRep);
+        team.appendChild(person.getSmallRep());
       }
 
       let l = this.teammates.length;

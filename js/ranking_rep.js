@@ -30,7 +30,7 @@ export class RankingRep {
     div.appendChild(peopleDiv);
 
     for (let person of this.members) {
-      var personRep = person.smallRep;
+      var personRep = person.getSmallRep();
       peopleDiv.appendChild(personRep);
     }
 
