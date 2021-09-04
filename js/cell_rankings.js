@@ -96,8 +96,7 @@ function getPlanetPassHeader() {
   planetPassHeader.textContent = "Saved from elimination by being given a 'Planet Pass' from the mentors:";
   planetPassHeader.style.textAlign = 'center';
   planetPassHeader.style.fontSize = '20';
-  planetPassHeader.style.marginTop = k.spacingMedium;
-  planetPassHeader.style.marginBottom = k.spacingMedium;
+  planetPassHeader.style.margin = k.spacingMedium;
   return planetPassHeader;
 }
 
@@ -116,8 +115,7 @@ function getPlanetPassCell() {
 function getEliminationDivider() {
   var eliminationDivider = document.createElement('hr');
   eliminationDivider.className = "eliminationDivider";
-  eliminationDivider.style.marginTop = k.spacingMedium;
-  eliminationDivider.style.marginBottom = k.spacingMedium;
+  eliminationDivider.style.margin = k.spacingMedium;
   return eliminationDivider;
 }
 

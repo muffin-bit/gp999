@@ -167,10 +167,6 @@ h1 {
   border-width: 2px;
 }
 
-.RankingRepPeopleNoBackground {
-  padding: 10px;
-}
-
 .eliminationDivider {
   width:100%;
   text-align:left;
@@ -357,10 +353,6 @@ h1 {
   }
 
   .RankingRepPeopleBackground {
-    padding: 6px;
-  }
-
-  .RankingRepPeopleNoBackground {
     padding: 6px;
   }
 
