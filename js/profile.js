@@ -4,6 +4,7 @@
 import * as k from './constants.js'
 import { Person } from './person.js';
 import { PerformanceRep } from './performance.js';
+import { RankingRep } from './ranking_rep.js';
 
 // Constants and variables
 const videos = {
@@ -28,7 +29,7 @@ function parseLine(row) {
 function showProfile(data, girlId) {
   let person = contestants[girlId];
   createProfileHeaderForPerson(person);
-  createPerformancesAndRankingsForPerson(person);
+  createPerformancesRankingsCellsForPerson(person);
 }
 
 function createProfileHeaderForPerson(person) {
@@ -66,11 +67,25 @@ function createProfileHeaderForPerson(person) {
     nameHeader.textContent = "Height: " + person.heightIN;
 }
 
-function createPerformancesAndRankingsForPerson(person) {
+function createPerformancesRankingsCellsForPerson(person) {
   var performancesList = document.getElementById("performancesList");
   performancesList.style.marginTop = k.spacingXLarge;
   performancesList.style.width = '100%';
 
+  // const cellsDiv = createCellsDiv(person);
+  // performancesList.appendChild(cellsDiv);
+
+  const rankingsDiv = createRankingsDiv(person);
+  performancesList.appendChild(rankingsDiv);
+
+  // PERFORMANCES
+  createPerformanceRep(person, videos.PR);
+  createPerformanceRep(person, videos.OOO);
+  createPerformanceRep(person, videos.AUDITION);
+  createPerformanceRep(person, videos.CONNECT);
+}
+
+function createRankingsDiv(person) {
   var rankingsDiv = document.createElement("div")
   rankingsDiv.className = "centeredColumn";
   rankingsDiv.style.width = "100%";
@@ -101,11 +116,11 @@ function createPerformancesAndRankingsForPerson(person) {
   rankingsContentDiv.appendChild(top9Candidate);
 
   if (person.auditionPerformance.top9Rank != "" && person.auditionPerformance.top9Rank !== undefined) {
-    var top9Rank = document.createElement("h3");
-    top9Rank.textContent = "Audition Mission Top 9 rank:    " + person.auditionPerformance.top9Rank
-    top9Rank.style.marginBottom = k.spacingSmall;
-    top9Rank.style.fontFamily = "DXWooriGoStd";
-    rankingsContentDiv.appendChild(top9Rank);
+    var auditionTop9Rank = document.createElement("h3");
+    auditionTop9Rank.textContent = "Audition Mission Top 9 rank:    " + person.auditionPerformance.top9Rank
+    auditionTop9Rank.style.marginBottom = k.spacingSmall;
+    auditionTop9Rank.style.fontFamily = "DXWooriGoStd";
+    rankingsContentDiv.appendChild(auditionTop9Rank);
   }
 
   var connectCellPrelimRank = document.createElement("h3");
@@ -120,25 +135,64 @@ function createPerformancesAndRankingsForPerson(person) {
   connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
   rankingsContentDiv.appendChild(connectCellFinalRank);
 
+  const connectTop9Rank = person.connectPerformance.individualFinalRank.rankOverall;
+  if (connectTop9Rank != "" && connectTop9Rank !== undefined) {
+    var connectTop9Ranking = document.createElement("h3");
+    connectTop9Ranking.textContent = "First elimination individual top 9 rank:    " + connectTop9Rank;
+    connectTop9Ranking.style.marginBottom = k.spacingSmall;
+    connectTop9Ranking.style.fontFamily = "DXWooriGoStd";
+    rankingsContentDiv.appendChild(connectTop9Ranking);
+  }
+
   var connectCellFinalRank = document.createElement("h3");
-  connectCellFinalRank.textContent = "First elimination individual top 9 rank:    " + person.connectPerformance.individualFinalRank.rankOverall;
+  connectCellFinalRank.textContent = "First elimination individual rank:    " + person.group + person.connectPerformance.individualFinalRank.rankWithinGroup;
   connectCellFinalRank.style.marginBottom = k.spacingSmall;
   connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
   rankingsContentDiv.appendChild(connectCellFinalRank);
 
-  var connectCellFinalRank = document.createElement("h3");
-  connectCellFinalRank.textContent = "First elimination individual rank within country:    " + person.connectPerformance.individualFinalRank.rankWithinGroup;
-  connectCellFinalRank.style.marginBottom = k.spacingSmall;
-  connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
-  rankingsContentDiv.appendChild(connectCellFinalRank);
+  return rankingsDiv;
+}
 
-  document.getElementById("performancesList").appendChild(rankingsDiv);
+function createCellsDiv(person) {
+  var cellsDiv = document.createElement("div");
+  cellsDiv.className = "centeredRow";
 
-  // PERFORMANCES
-  createPerformanceRep(person, videos.PR);
-  createPerformanceRep(person, videos.OOO);
-  createPerformanceRep(person, videos.AUDITION);
-  createPerformanceRep(person, videos.CONNECT);
+  var auditionCell = document.createElement("div");
+  var auditionCellHeader = document.createElement("h3");
+  auditionCellHeader.textContent = "Audition Mission";
+  auditionCell.appendChild(auditionCellHeader);
+  var auditionCellBuilder = {
+    members: sortedPeople,
+    rank: -1,
+    showBackground: true
+  }
+  const auditionCellRep = new RankingRep(auditionCellBuilder);
+  auditionCell.add(auditionCellRep.rep);
+
+  var connectCell = document.createElement("div");
+  connectCell.className = "centeredColumn";
+  var connectCellHeader = document.createElement("h3");
+  connectCellHeader.textContent = "Audition Mission";
+  connectCellHeader.style.textAlign = 'center';
+  connectCellHeader.style.marginBottom = k.spacingMedium;
+  connectCellHeader.style.fontSize = '30';
+  connectCell.appendChild(connectCellHeader);
+  let cellMatesRaw = person.connectPerformance.cellMates.split(", ");
+  let cellMatesProcessed = [];
+  for (let member of cellMatesRaw) {
+    cellMatesProcessed.push(contestants[member]);
+  }
+
+  var connectCellBuilder = {
+    members: cellMatesProcessed,
+    rank: -1,
+    showBackground: true
+  }
+  const connectCellRep = new RankingRep(connectCellBuilder);
+  connectCell.appendChild(connectCellRep.rep);
+  cellsDiv.appendChild(connectCell);
+
+  return cellsDiv;
 }
 
 function createPerformanceRep(person, performance) {

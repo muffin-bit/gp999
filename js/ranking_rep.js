@@ -16,11 +16,13 @@ export class RankingRep {
     div.className = 'cell centeredRow'
 
     // Rank
-    var rankText = document.createElement('h3');
-    rankText.id = "rankText";
-    div.appendChild(rankText);
-    if (!isNaN(this.rank)) { // hold the space for it either way
-      rankText.textContent = this.rank;
+    if (this.rank != -1) { // If its -1, we won't show it at all
+      var rankText = document.createElement('h3');
+      rankText.id = "rankText";
+      div.appendChild(rankText);
+      if (!isNaN(this.rank)) { // If its NaN, we'll hold space for it
+        rankText.textContent = this.rank;
+      }
     }
 
     // People
