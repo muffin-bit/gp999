@@ -45,11 +45,14 @@ function sortByCKJ() {
 }
 
 function getRankingType() {
-  if (window.location.pathname == "/connect_prelim_rankings.html") {
+  var n = window.location.pathname.lastIndexOf('/');
+  var page = window.location.pathname.substring(n + 1);
+
+  if (page == "connect_prelim_rankings.html") {
     return rt.CONNECT_CELL_PRELIM;
-  } else if (window.location.pathname == "/connect_final_rankings.html") {
+  } else if (page == "connect_final_rankings.html") {
     return rt.CONNECT_CELL_FINAL;
-  } else if (window.location.pathname == "/connect_rankings.html") {
+  } else if (page == "connect_rankings.html") {
     return rt.CONNECT_INDIVIDUAL_BY_GROUP;
   } else {
     return 0;
