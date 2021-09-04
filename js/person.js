@@ -16,6 +16,7 @@ export class Person {
     this.mbti = row["MBTI"];
     this.heightCM = row["Height (cm)"];
     this.heightIN = row["Height (in)"];
+    this.eliminated = row["Connect Eliminated Y/N/Planet Pass"] == "Y";
     this.signalSong = {
       id: row["Signal Song Video URL"],
       fancamURL: row["Signal Song Video URL"],

@@ -1,26 +1,27 @@
 "use strict";
 
 import * as k from './constants.js'
+import { Person } from './person.js';
+
+// Constants
+var contestantData = [];
 
 // Parse line of csv into an object
 function parseLine(row) {
-    var person = {};
-    person.id = row["Contestant ID (internal)"];
-    person.group = row["Group Association"]
-    person.nameEnglish = row["Name (English)"];
-    person.nameJapanese = row["Name (Japanese)"];
-    person.nameChinese = row["Name (Chinese)"];
-    person.nameKorean = row["Name (Korean)"];
-    person.profilePic1 = row["Profile Pic 1"]
-    return person;
+  var person = new Person(row);
+  return person;
 }
 
-function showProfiles(data) {
-    data.forEach(createProfileDivForPerson)
+function showProfiles(data, includeEliminated) {
+    data.forEach(function(p){createProfileDivForPersonIfNeeded(p, includeEliminated)})
     return data;
 }
 
-function createProfileDivForPerson(person) {
+function createProfileDivForPersonIfNeeded(person, includeEliminated) {
+  if (!includeEliminated && person.eliminated) {
+    return;
+  }
+
     var div = document.createElement('div');
     div.className = 'smallProfile ' + person.group + 'Group'; // Two DOM classes
 
@@ -139,6 +140,14 @@ function setupFilters() {
 
   var resetFilterButton = document.getElementById("resetFilterButton");
   resetFilterButton.addEventListener('click', resetFilters);
+
+  document.getElementById("contestantSwitchEliminated").onclick = function(){refreshContestantGrid(); };
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
 
 window.addEventListener("resize", function(event) {
@@ -160,10 +169,17 @@ function configurefilters() {
   }
 }
 
+function refreshContestantGrid() {
+  removeAllChildNodes(document.getElementById("contestantsGrid")) // clear the grid
+  const shouldShowEliminated = document.getElementById("contestantSwitchEliminated").checked;
+  showProfiles(contestantData, shouldShowEliminated);
+}
+
 function main() {
   // Get data
   d3.csv("https://muffin-bit.github.io/gp999/data.csv", parseLine, function (err, data) {
-      showProfiles(data);
+      contestantData = data;
+      refreshContestantGrid();
   });
   setupFilters();
   configurefilters();
