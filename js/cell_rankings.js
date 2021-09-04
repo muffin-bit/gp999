@@ -165,47 +165,47 @@ function getTop9Div() {
 
   var top9FirstRow = document.createElement('div');
   top9FirstRow.className = "centeredRow fullWidth";
-  top9FirstRow.appendChild(top9[1].getSmallRep(1));
+  top9FirstRow.appendChild(top9[1].getSmallRep(1, top9[1].connectPerformance.individualFinalRank.votesTotalPoints));
   top9Div.appendChild(top9FirstRow);
 
   // DESKTOP
   var top9SecondRow = document.createElement('div');
   top9SecondRow.className = "centeredRow fullWidth desktopOnly";
-  top9SecondRow.appendChild(top9[2].getSmallRep(2));
-  top9SecondRow.appendChild(top9[3].getSmallRep(3));
-  top9SecondRow.appendChild(top9[4].getSmallRep(4));
+  top9SecondRow.appendChild(top9[2].getSmallRep(2, top9[2].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9SecondRow.appendChild(top9[3].getSmallRep(3, top9[3].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9SecondRow.appendChild(top9[4].getSmallRep(4, top9[4].connectPerformance.individualFinalRank.votesTotalPoints));
   top9Div.appendChild(top9SecondRow);
 
   var top9ThirdRow = document.createElement('div');
   top9ThirdRow.className = "centeredRow fullWidth desktopOnly";
-  top9ThirdRow.appendChild(top9[5].getSmallRep(5));
-  top9ThirdRow.appendChild(top9[6].getSmallRep(6));
-  top9ThirdRow.appendChild(top9[7].getSmallRep(7));
-  top9ThirdRow.appendChild(top9[8].getSmallRep(8));
-  top9ThirdRow.appendChild(top9[9].getSmallRep(9));
+  top9ThirdRow.appendChild(top9[5].getSmallRep(5, top9[5].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9ThirdRow.appendChild(top9[6].getSmallRep(6, top9[6].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9ThirdRow.appendChild(top9[7].getSmallRep(7, top9[7].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9ThirdRow.appendChild(top9[8].getSmallRep(8, top9[8].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9ThirdRow.appendChild(top9[9].getSmallRep(9, top9[9].connectPerformance.individualFinalRank.votesTotalPoints));
   top9Div.appendChild(top9ThirdRow);
 
   // MOBILE
   var top9SecondRowMobile = document.createElement('div');
   top9SecondRowMobile.className = "centeredRow mobileOnly fullWidth";
-  top9SecondRowMobile.appendChild(top9[2].getSmallRep(2));
-  top9SecondRowMobile.appendChild(top9[3].getSmallRep(3));
+  top9SecondRowMobile.appendChild(top9[2].getSmallRep(2, top9[2].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9SecondRowMobile.appendChild(top9[3].getSmallRep(3, top9[3].connectPerformance.individualFinalRank.votesTotalPoints));
   top9Div.appendChild(top9SecondRowMobile);
 
   var top9ThirdRowMobile = document.createElement('div');
   top9ThirdRowMobile.className = "centeredRow mobileOnly fullWidth";
-  top9ThirdRowMobile.appendChild(top9[4].getSmallRep(4));
-  top9ThirdRowMobile.appendChild(top9[5].getSmallRep(5));
-  top9ThirdRowMobile.appendChild(top9[6].getSmallRep(6));
+  top9ThirdRowMobile.appendChild(top9[4].getSmallRep(4, top9[4].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9ThirdRowMobile.appendChild(top9[5].getSmallRep(5, top9[5].connectPerformance.individualFinalRank.votesTotalPoints));
+  top9ThirdRowMobile.appendChild(top9[6].getSmallRep(6, top9[6].connectPerformance.individualFinalRank.votesTotalPoints));
   top9Div.appendChild(top9ThirdRowMobile);
 
   var top9FourthRowMobile = document.createElement('div');
   top9FourthRowMobile.className = "centeredRow mobileOnly fullWidth";
-  const rep1 = top9[7].getSmallRep(7);
+  const rep1 = top9[7].getSmallRep(7, top9[7].connectPerformance.individualFinalRank.votesTotalPoints);
   rep1.style.marginRight = '30px';
   top9FourthRowMobile.appendChild(rep1);
-  top9FourthRowMobile.appendChild(top9[8].getSmallRep(8));
-  const rep2 = top9[9].getSmallRep(9);
+  top9FourthRowMobile.appendChild(top9[8].getSmallRep(8, top9[8].connectPerformance.individualFinalRank.votesTotalPoints));
+  const rep2 = top9[9].getSmallRep(9, top9[9].connectPerformance.individualFinalRank.votesTotalPoints);
   rep2.style.marginLeft = '30px';
   top9FourthRowMobile.appendChild(rep2);
   top9Div.appendChild(top9FourthRowMobile);

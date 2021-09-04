@@ -70,7 +70,7 @@ export class Person {
     };
   }
 
-  getSmallRep(withRanking = -1) {
+  getSmallRep(withRanking = -1, withPoints = -1) {
     var div = document.createElement('div');
     div.className = 'smallPersonRep'
     const theID = this.id;
@@ -100,8 +100,19 @@ export class Person {
     nameEnglish.textContent = this.nameEnglish;
     nameEnglish.style.textAlign = 'center';
     nameEnglish.style.marginBottom = k.spacingTiny;
-    nameEnglish.style.height = '40px';
+    nameEnglish.style.height = '26px';
     div.appendChild(nameEnglish)
+
+    if (withPoints != -1) {
+      var points = document.createElement('h3');
+      points.textContent = withPoints;
+      points.style.textAlign = 'center';
+      points.style.marginBottom = k.spacingTiny;
+      points.style.fontFamily = "DXWooriGoStd";
+      points.style.color = "#404040";
+      // points.style.height = '30px';
+      div.appendChild(points)
+    }
 
     return div;
   }

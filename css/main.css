@@ -191,7 +191,7 @@ h1 {
   justify-content: center;
   font-size: 11px;
   width: 100px;
-  height: 120px;
+  /* height: 140px; */
   margin: 10px;
   text-decoration: none;
 }
@@ -213,6 +213,7 @@ h1 {
 #rankingsCountryHeader {
   width: 276px;
   margin-left: 28px;
+  margin-bottom: 16px;
 }
 
 #rankingsCountryHeader h3 {
@@ -220,8 +221,7 @@ h1 {
 }
 
 .cell {
-  margin: 10px;
-  margin-right: 40px;
+  margin: 0px 40px, 10px, 10px;
 }
 
 .paragraphDescription {
@@ -350,7 +350,7 @@ h1 {
     justify-content: center;
     font-size: 11px;
     width: 80px;
-    height: 120px;
+    /* height: 140px; */
     margin: 4px;
     text-decoration: none;
   }
@@ -366,6 +366,7 @@ h1 {
   #rankingsCountryHeader {
     width: 200px;
     margin-left: 12px;
+    margin-bottom: 12px;
   }
 
   #rankingsCountryHeader h3 {
