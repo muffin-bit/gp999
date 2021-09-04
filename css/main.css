@@ -38,7 +38,8 @@ h1 {
 
 /* Top */
 #banner {
-  background: #311377; /*url("../img/banner.png") center center; */
+  background: #532fa1;
+  /* background: #311377; /*url("../img/banner.png") center center; */ */
   box-sizing: border-box;
   position: relative;
   text-align: center;
@@ -51,7 +52,8 @@ h1 {
 }
 
 #banner2 {
-  background: #604bab;
+  background: #653fb5;
+  /* background: #604bab; */
   font-size: 6px;
 }
 
@@ -272,7 +274,7 @@ h1 {
 @media screen and (max-width: 800px) {
   #bodyContent {
     padding-top: 40px;
-    margin: 0px 2vw;
+    margin: 0px 4vw;
   }
 
   .mobileOnly {
@@ -386,6 +388,6 @@ h1 {
 
   .cell {
     width: 100%;
-    margin: 0px 20px 0px 0px;
+    margin: 0px 20px 16px 0px;
   }
 }
