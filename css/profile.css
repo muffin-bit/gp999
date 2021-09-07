@@ -33,7 +33,7 @@
 }
 
 #profileHeaderTextNameEnglish {
-  font-size: 80px;
+  font-size: 72px;
 }
 
 #profileNamesNonEnglish {
@@ -64,39 +64,105 @@
   font-size: 24px;
 }
 
+.sectionHeading{
+  font-size: 50px;
+}
+
+.sectionSubHeading {
+  font-size: 30px;
+}
+
+/* Use a media query to add a breakpoint at 1450px: */
+@media screen and (max-width: 1450px) {
+  #profileHeaderTextNameEnglish {
+    font-size: 40px;
+  }
+
+  #profileHeaderTextGroupAndNames {
+    justify-content: space-evenly;
+  }
+
+  #profileNamesNonEnglish {
+    font-size: 18px;
+  }
+
+  .sectionHeading{
+    font-size: 36px;
+  }
+  
+  .sectionSubHeading {
+    font-size: 24px;
+  }
+
+  .performance > .centeredRow {
+    justify-content: space-evenly;
+  }
+}
+
 /* Use a media query to add a breakpoint at 800px: */
 @media screen and (max-width: 800px) {
+
+  #profileHeaderText {
+    height: auto;
+    margin: 1em;
+  }
+
+  #profileHeaderTextBody > h1 {
+    font-size: 18px;
+    line-height: 9px;
+  }
+
   #profileHeaderTextNameEnglish {
-    font-size: 14vw;
+    font-size: 12vw;
+  }
+
+  #profileHeaderTextGroupAndNames {
+    justify-content: space-around;
   }
 
   .profileHeaderCard {
     width: 100%;
     height: auto;
-    padding: 0px;
+    padding: 0;
   }
 
   #profileHeaderImageWrapper {
     width: 100%;
     height: auto;
-    padding: 0px;
+    padding: 0;
   }
 
   #profileGroup {
     font-size: 40px;
     line-height: 1.1;
-    display: inline-block;
-    vertical-align: middle;
-    border-style: solid;
-    border-radius: 50%;
     padding: 18px;
     width:50px;
     height:50px;
     margin-bottom: 20px;
   }
 
-  profileNamesNonEnglish {
+  #profileNamesNonEnglish {
+    font-size: 14px;
+  }
+
+  .profileRankingsContent {
+    font-size: 14px;
+  }
+
+  .sectionHeading{
+    font-size: 24px;
+  }
+  
+  .sectionSubHeading {
     font-size: 18px;
+  }
+}
+
+/* Use a media query to add a breakpoint at 600px: */
+@media screen and (max-width: 600px) {
+
+  #profileHeaderTextGroupAndNames {
+    justify-content: space-evenly;
   }
 
   .profileRankingsContent {

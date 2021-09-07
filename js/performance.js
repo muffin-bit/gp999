@@ -38,7 +38,7 @@ export class PerformanceRep {
       title.textContent = this.title;
       title.style.textAlign = 'center';
       title.style.marginBottom = k.spacingSmall;
-      title.style.fontSize = '50';
+      title.classList.add('sectionHeading');
       leftSide.appendChild(title);
     }
 
@@ -48,19 +48,19 @@ export class PerformanceRep {
       subtitle.textContent = this.subtitle;
       subtitle.style.textAlign = 'center';
       subtitle.style.marginBottom = k.spacingSmall;
-      subtitle.style.fontSize = '30';
       subtitle.style.fontFamily = "DXWooriGoStd";
+      subtitle.classList.add('sectionSubHeading');
       leftSide.appendChild(subtitle);
     }
 
     var teamName;
     if (this.teamName != "" && this.teamName !== undefined) {
-      teamName = document.createElement('h3');
-      teamName.textContent = "Team " + this.teamName;
+      teamName = document.createElement('h4');
+      teamName.textContent = "Team: " + this.teamName;
       teamName.style.textAlign = 'center';
       teamName.style.marginBottom = k.spacingMedium;
-      teamName.style.fontSize = '30';
       teamName.style.fontFamily = "DXWooriGoStd";
+      teamName.classList.add('sectionSubHeading');
       leftSide.appendChild(teamName);
     }
 
