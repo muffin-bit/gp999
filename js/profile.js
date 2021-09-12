@@ -11,8 +11,9 @@ const videos = {
     OOO: 'ooo',
     PR: 'pr',
     HIDDENBOX: 'hiddenbox',
-    AUDITION: 'summer',
-    CONNECT: 'winter',
+    AUDITION: 'audition',
+    CONNECT: 'connect',
+    COMBINATION: 'combination',
 }
 
 const contestants = {}
@@ -83,6 +84,7 @@ function createPerformancesRankingsCellsForPerson(person) {
   createPerformanceRep(person, videos.OOO);
   createPerformanceRep(person, videos.AUDITION);
   createPerformanceRep(person, videos.CONNECT);
+  createPerformanceRep(person, videos.COMBINATION);
 }
 
 function createRankingsDiv(person) {
@@ -224,6 +226,14 @@ function createPerformanceRep(person, performance) {
       perfBuilder.perfURL = person.connectPerformance.perfURL;
       perfBuilder.fancamURL = person.connectPerformance.fancamURL;
       perfProperty = "connectPerformance";
+      break;
+    case videos.COMBINATION:
+      perfBuilder.title = "Combination Mission";
+      perfBuilder.subtitle =  "\"" + person.combinationPerformance.name + "\"";
+      perfBuilder.teamName = person.combinationPerformance.teamName;
+      perfBuilder.perfURL = person.combinationPerformance.perfURL;
+      perfBuilder.fancamURL = person.combinationPerformance.fancamURL;
+      perfProperty = "combinationPerformance";
       break;
     default:
       console.error("WARNING: Unknown performance being rendered");
