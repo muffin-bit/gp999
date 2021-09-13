@@ -64,28 +64,31 @@ export class Person {
         votesTotalPoints: row["Connect Individual Votes Total Points"],
       },
     };
-    this.combinationPerformance = {
-      id: row["Combination Song"],
-      name: row["Combination Song"],
-      teamName: row["Combination Team Name"],
-      position: row["Combination Position"],
-      perfURL: row["Combination URL"],
-      fancamURL: row["Combination Fancam URL"],
-      prelimRank: {
-        rank: row["Combination Prelim Rank"],
-        votesKorea: row["Combination Prelim Votes (Korea)"],
-        votesInternational: row["Combination Prelim Votes (International)"],
-        votesTotalPoints: row["Combination Prelim Total Points"],
+    if (row["Combination Song"] != "" && row["Combination Song"] !== undefined) {
+      this.combinationPerformance = {
+        id: row["Combination Song"],
+        name: row["Combination Song"],
+        teamName: row["Combination Team Name"],
+        songType: row["Combination Type"],
+        position: row["Combination Position"],
+        perfURL: row["Combination URL"],
+        fancamURL: row["Combination Fancam URL"],
+        prelimRank: {
+          rank: row["Combination Prelim Rank"],
+          votesKorea: row["Combination Prelim Votes (Korea)"],
+          votesInternational: row["Combination Prelim Votes (International)"],
+          votesTotalPoints: row["Combination Prelim Total Points"],
 
-      },
-      finalRank: {
-        rank: row["Combination Final Rank"],
-        votesKorea: row["Combination Final Votes (Korea)"],
-        votesInternational: row["Combination Final Votes (International)"],
-        votesTotalPoints: row["Combination Final Total Points"],
-        eliminated: row["Combination Eliminated Y/N/Planet Pass"]
-      }
-    };
+        },
+        finalRank: {
+          rank: row["Combination Final Rank"],
+          votesKorea: row["Combination Final Votes (Korea)"],
+          votesInternational: row["Combination Final Votes (International)"],
+          votesTotalPoints: row["Combination Final Total Points"],
+          eliminated: row["Combination Eliminated Y/N/Planet Pass"]
+        }
+      };
+    }
     this.newCell = {
       prelimRank: row["New Cell Prelim Rank"],
       finalRank: row["New Cell Final Rank"]

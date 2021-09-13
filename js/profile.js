@@ -228,7 +228,11 @@ function createPerformanceRep(person, performance) {
       perfProperty = "connectPerformance";
       break;
     case videos.COMBINATION:
+      if (person.combinationPerformance == undefined) {
+        return; // eliminated contestants from ep 5 won't have one
+      }
       perfBuilder.title = "Combination Mission";
+      perfBuilder.songType = person.combinationPerformance.songType;
       perfBuilder.subtitle =  "\"" + person.combinationPerformance.name + "\"";
       perfBuilder.teamName = person.combinationPerformance.teamName;
       perfBuilder.perfURL = person.combinationPerformance.perfURL;
@@ -258,7 +262,7 @@ function createPerformanceRep(person, performance) {
     var teammates = [];
     if (performance != videos.OOO && performance != videos.PR) { // Awkward to show teammates for signal song solos
       for (let c in contestants) {
-        if (contestants[c][perfProperty].id == person[perfProperty].id) {
+        if (contestants[c][perfProperty] !== undefined && person[perfProperty] !== undefined && contestants[c][perfProperty].id == person[perfProperty].id) {
           teammates.push(contestants[c]);
         }
       }

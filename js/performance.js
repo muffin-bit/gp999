@@ -11,6 +11,7 @@ export class PerformanceRep {
     this.teammates = builder.teammates;
     this.cells = builder.cells;
     this.teamName = builder.teamName;
+    this.songType = builder.songType;
     this.perfURL = builder.perfURL;
     this.fancamURL = builder.fancamURL;
     this.perfDomId = builder.title + "-perfVideo";
@@ -40,6 +41,17 @@ export class PerformanceRep {
       title.style.marginBottom = k.spacingSmall;
       title.style.fontSize = '50';
       leftSide.appendChild(title);
+    }
+
+    var songType;
+    if (this.songType != "" && this.songType !== undefined) {
+      songType = document.createElement('h3');
+      songType.textContent = this.songType;
+      songType.style.textAlign = 'center';
+      songType.style.marginBottom = k.spacingMedium;
+      songType.style.fontSize = '30';
+      songType.style.fontFamily = "DXWooriGoStd";
+      leftSide.appendChild(songType);
     }
 
     var subtitle;
