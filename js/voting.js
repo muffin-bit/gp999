@@ -16,7 +16,7 @@ function configureValidVotingPeriods() {
   // Second elimination
   validVotingPeriods.push({
     start: new Date(Date.UTC(2021, 7, 1, 1)), // Thursday, August 1, 1:00am UTC+0  // Unknown, just picked a date
-    end: new Date(Date.UTC(2021, 9, 18, 1)) // Thursday, September 18, 1:00am UTC+0
+    end: new Date(Date.UTC(2021, 8, 18, 1)) // Thursday, September 18, 1:00am UTC+0
   });
 }
 
