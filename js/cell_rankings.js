@@ -303,7 +303,6 @@ function showRankings() {
     // Show elimination and planet pass info when needed
     const hasAnElimination = [rt.CONNECT_CELL_PRELIM, rt.CONNECT_CELL_FINAL, rt.COMBINATION_BY_GROUP].includes(getRankingType())
     if (hasAnElimination && trio.rank == cellsSurviving[getRankingType()]) {
-      debugger;
       if ([rt.CONNECT_CELL_FINAL, rt.COMBINATION_BY_GROUP].includes(getRankingType()) && planetPass.length > 0) {
         rankingsList.appendChild(getPlanetPassHeader());
         rankingsList.appendChild(getPlanetPassCell());
