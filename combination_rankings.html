@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+    <!-- To scale nicely on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165983178-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-165983178-1');
+    </script>
+
+    <!-- Javascript -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/d3.v4.min.js" charset="utf-8"></script>
+    <script src="js/components/navbar.js" type="text/javascript" defer></script>
+    <script src="js/components/navbar-rankings.js" type="text/javascript" defer></script>
+    <script src="js/components/floating-feedback-button.js" type="text/javascript" defer></script>
+
+    <!-- Styling -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- Meta Info -->
+    <link rel="icon" type="image/jpg" sizes="32x32" href="img/Girls_Planet_999_Logo_EN.png">
+    <link rel="shortcut icon" href="img/Girls_Planet_999_Logo_EN.png" />
+    <title>Girls Planet 999 Rankings</title>
+</head>
+<body>
+    <navbar-component></navbar-component>
+    <navbar-rankings-component></navbar-rankings-component>
+    <floating-feedback-button></floating-feedback-button>
+    <div id="bodyContent">
+      <div class="centeredColumn">
+        <h1 id="rankingsHeader">Combination Mission</h1>
+        <h1 id="rankingsHeader">Top 9</h1>
+        <div id="rankingsListTop9"></div>
+        <h1 id="rankingsListHeader">Combination Mission Individual Rankings</h1>
+        <p class="paragraphDescription">These are the final individual rankings shared in episode 8.</p>
+        <p class="paragraphDescription">27 contestants survived to the next round, although contestent Xu Ziyin has withdrawn due to health concerns, so 26 contestants will move forward.</p>
+        <p class="paragraphDescription">27 contestants were eliminated.</p>
+        <div id="rankingsList"</div>
+      </div>
+    </div>
+    <script type="module" src="js/cell_rankings.js"></script>
+</body>
+</html>

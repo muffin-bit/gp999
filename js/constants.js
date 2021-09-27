@@ -6,6 +6,15 @@ export const spacingMedium = '30px';
 export const spacingLarge = '40px';
 export const spacingXLarge = '80px';
 
+const videos = {
+    OOO: 'ooo',
+    PR: 'pr',
+    HIDDENBOX: 'hiddenbox',
+    AUDITION: 'audition',
+    CONNECT: 'connect',
+    COMBINATION: 'combination',
+}
+
 // Utility functions
 export function sortByCKJ() {
   return function(a, b) {

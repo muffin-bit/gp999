@@ -7,14 +7,7 @@ import { PerformanceRep } from './performance.js';
 import { RankingRep } from './ranking_rep.js';
 
 // Constants and variables
-const videos = {
-    OOO: 'ooo',
-    PR: 'pr',
-    HIDDENBOX: 'hiddenbox',
-    AUDITION: 'audition',
-    CONNECT: 'connect',
-    COMBINATION: 'combination',
-}
+
 
 const contestants = {}
 var performances = []
@@ -80,11 +73,11 @@ function createPerformancesRankingsCellsForPerson(person) {
   performancesList.appendChild(rankingsDiv);
 
   // PERFORMANCES
-  createPerformanceRep(person, videos.PR);
-  createPerformanceRep(person, videos.OOO);
-  createPerformanceRep(person, videos.AUDITION);
-  createPerformanceRep(person, videos.CONNECT);
-  createPerformanceRep(person, videos.COMBINATION);
+  createPerformanceRep(person, PR);
+  createPerformanceRep(person, k.videos.OOO);
+  createPerformanceRep(person, k.videos.AUDITION);
+  createPerformanceRep(person, k.videos.CONNECT);
+  createPerformanceRep(person, k.videos.COMBINATION);
 }
 
 function createRankingsDiv(person) {
@@ -202,24 +195,24 @@ function createPerformanceRep(person, performance) {
   var perfBuilder = {};
   var perfProperty = "";
   switch(performance){
-    case videos.PR:
+    case k.videos.PR:
       perfBuilder.title = "PR Intro";
       perfBuilder.fancamURL = person.prVideo.fancamURL;
       perfProperty = "prVideo";
       break;
-    case videos.OOO:
+    case k.videos.OOO:
       perfBuilder.title = "Signal Song";
       perfBuilder.subtitle = "(O.O.O)";
       perfBuilder.fancamURL = person.signalSong.fancamURL;
       perfProperty = "signalSong";
       break;
-    case videos.AUDITION:
+    case k.videos.AUDITION:
       perfBuilder.title = "Audition Mission";
       perfBuilder.subtitle = "\"" + person.auditionPerformance.name + "\"";
       perfBuilder.perfURL = person.auditionPerformance.perfURL;
       perfProperty = "auditionPerformance";
       break;
-    case videos.CONNECT:
+    case k.videos.CONNECT:
       perfBuilder.title = "Connect Mission";
       perfBuilder.subtitle =  "\"" + person.connectPerformance.name + "\"";
       perfBuilder.teamName = person.connectPerformance.teamName;
@@ -227,7 +220,7 @@ function createPerformanceRep(person, performance) {
       perfBuilder.fancamURL = person.connectPerformance.fancamURL;
       perfProperty = "connectPerformance";
       break;
-    case videos.COMBINATION:
+    case k.videos.COMBINATION:
       if (person.combinationPerformance == undefined) {
         return; // eliminated contestants from ep 5 won't have one
       }
@@ -245,7 +238,7 @@ function createPerformanceRep(person, performance) {
   }
 
   // Get teammates / cells
-  if (performance == videos.CONNECT) { // Use cells for connect mission
+  if (performance == k.videos.CONNECT) { // Use cells for connect mission
     var cells = {};
     for (let c in contestants) {
       if (contestants[c][perfProperty].id == person[perfProperty].id) {
@@ -260,7 +253,7 @@ function createPerformanceRep(person, performance) {
     perfBuilder.cells = cells;
   } else {
     var teammates = [];
-    if (performance != videos.OOO && performance != videos.PR) { // Awkward to show teammates for signal song solos
+    if (performance != k.videos.OOO && performance != k.videos.PR) { // Awkward to show teammates for signal song solos
       for (let c in contestants) {
         if (contestants[c][perfProperty] !== undefined && person[perfProperty] !== undefined && contestants[c][perfProperty].id == person[perfProperty].id) {
           teammates.push(contestants[c]);

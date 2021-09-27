@@ -74,18 +74,16 @@ export class Person {
         perfURL: row["Combination URL"],
         fancamURL: row["Combination Fancam URL"],
         prelimRank: {
-          rank: row["Combination Prelim Rank"],
-          votesKorea: row["Combination Prelim Votes (Korea)"],
-          votesInternational: row["Combination Prelim Votes (International)"],
-          votesTotalPoints: row["Combination Prelim Total Points"],
+          rank: row["Combination Interim Rank within K/J/C Group"]
 
         },
         finalRank: {
-          rank: row["Combination Final Rank"],
-          votesKorea: row["Combination Final Votes (Korea)"],
-          votesInternational: row["Combination Final Votes (International)"],
-          votesTotalPoints: row["Combination Final Total Points"],
-          eliminated: row["Combination Eliminated Y/N/Planet Pass"]
+          rankWithinGroup: row["Combination Final Rank within K/J/C Group"],
+          rankOverall: row["Combination Final Overall Rank"],
+          votesKorea: row["Combination Votes Korea"],
+          votesInternational: row["Combination Votes International"],
+          votesTotalPoints: row["Combination Total Points"],
+          eliminated: row["Combination Eliminated (Y/N/Planet Pass)"]
         }
       };
     }
