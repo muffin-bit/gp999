@@ -90,7 +90,7 @@ function createRankingsDiv(person) {
   rankingsTitle.textContent = "Rankings";
   rankingsTitle.style.textAlign = 'center';
   rankingsTitle.style.marginBottom = k.spacingMedium;
-  rankingsTitle.style.fontSize = '50';
+  rankingsTitle.classList.add('sectionHeading');
   rankingsDiv.appendChild(rankingsTitle);
 
   var rankingsContentDiv = document.createElement("div")
@@ -98,33 +98,33 @@ function createRankingsDiv(person) {
   rankingsContentDiv.style.marginBottom = k.spacingXLarge;
   rankingsDiv.appendChild(rankingsContentDiv);
 
-  var signalSong = document.createElement("h3");
+  var signalSong = document.createElement("h4");
   signalSong.textContent = "Signal Song (O.O.O):    " + person.group + person.signalSong.rank;
   signalSong.style.marginBottom = k.spacingSmall;
   signalSong.style.fontFamily = "DXWooriGoStd";
   rankingsContentDiv.appendChild(signalSong);
 
-  var top9Candidate = document.createElement("h3");
+  var top9Candidate = document.createElement("h4");
   top9Candidate.textContent = "Audition Mission Top 9 candidate:    " + (person.auditionPerformance.top9Candidate == "Y" ? "Yes" : "No");
   top9Candidate.style.marginBottom = k.spacingSmall;
   top9Candidate.style.fontFamily = "DXWooriGoStd";
   rankingsContentDiv.appendChild(top9Candidate);
 
   if (person.auditionPerformance.top9Rank != "" && person.auditionPerformance.top9Rank !== undefined) {
-    var auditionTop9Rank = document.createElement("h3");
+    var auditionTop9Rank = document.createElement("h4");
     auditionTop9Rank.textContent = "Audition Mission Top 9 rank:    " + person.auditionPerformance.top9Rank
     auditionTop9Rank.style.marginBottom = k.spacingSmall;
     auditionTop9Rank.style.fontFamily = "DXWooriGoStd";
     rankingsContentDiv.appendChild(auditionTop9Rank);
   }
 
-  var connectCellPrelimRank = document.createElement("h3");
+  var connectCellPrelimRank = document.createElement("h4");
   connectCellPrelimRank.textContent = "First elimination prelim cell rank:    " + person.connectPerformance.cellPrelimRank.rank;
   connectCellPrelimRank.style.marginBottom = k.spacingSmall;
   connectCellPrelimRank.style.fontFamily = "DXWooriGoStd";
   rankingsContentDiv.appendChild(connectCellPrelimRank);
 
-  var connectCellFinalRank = document.createElement("h3");
+  var connectCellFinalRank = document.createElement("h4");
   connectCellFinalRank.textContent = "First elimination final cell rank:    " + person.connectPerformance.cellFinalRank.rank;
   connectCellFinalRank.style.marginBottom = k.spacingSmall;
   connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
@@ -132,14 +132,14 @@ function createRankingsDiv(person) {
 
   const connectTop9Rank = person.connectPerformance.individualFinalRank.rankOverall;
   if (connectTop9Rank != "" && connectTop9Rank !== undefined) {
-    var connectTop9Ranking = document.createElement("h3");
+    var connectTop9Ranking = document.createElement("h4");
     connectTop9Ranking.textContent = "First elimination individual top 9 rank:    " + connectTop9Rank;
     connectTop9Ranking.style.marginBottom = k.spacingSmall;
     connectTop9Ranking.style.fontFamily = "DXWooriGoStd";
     rankingsContentDiv.appendChild(connectTop9Ranking);
   }
 
-  var connectCellFinalRank = document.createElement("h3");
+  var connectCellFinalRank = document.createElement("h4");
   connectCellFinalRank.textContent = "First elimination individual rank:    " + person.group + person.connectPerformance.individualFinalRank.rankWithinGroup;
   connectCellFinalRank.style.marginBottom = k.spacingSmall;
   connectCellFinalRank.style.fontFamily = "DXWooriGoStd";
@@ -155,6 +155,7 @@ function createCellsDiv(person) {
   var auditionCell = document.createElement("div");
   var auditionCellHeader = document.createElement("h3");
   auditionCellHeader.textContent = "Audition Mission";
+  auditionCellHeader.classList.add('sectionHeading');
   auditionCell.appendChild(auditionCellHeader);
   var auditionCellBuilder = {
     members: sortedPeople,
@@ -170,7 +171,7 @@ function createCellsDiv(person) {
   connectCellHeader.textContent = "Audition Mission";
   connectCellHeader.style.textAlign = 'center';
   connectCellHeader.style.marginBottom = k.spacingMedium;
-  connectCellHeader.style.fontSize = '30';
+  connectCellHeader.classList.add('sectionHeading');
   connectCell.appendChild(connectCellHeader);
   let cellMatesRaw = person.connectPerformance.cellMates.split(", ");
   let cellMatesProcessed = [];
